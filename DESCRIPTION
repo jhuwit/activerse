@@ -1,0 +1,19 @@
+Package: activerse
+Title: Attach Activerse Packages
+Version: 0.0.0.9000
+Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+Description: A lightweight package that attaches actibase, actiread, and
+    actimetrics together, similar to tidyverse.
+License: MIT
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports:
+    actibase,
+    actiread,
+    actimetrics
+Remotes:
+    jhuwit/actibase,
+    jhuwit/actiread,
+    jhuwit/actimetrics
