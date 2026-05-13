@@ -80,6 +80,12 @@ activerse_conflicts <- function(only = NULL) {
     return(character())
   }
 
+  # Magrittr pipe operators are intentionally ignored in the attach message.
+  conflicts <- conflicts[!names(conflicts) %in% c("%>%", "%<>%", "%T>%", "%$%")]
+  if (length(conflicts) == 0) {
+    return(character())
+  }
+
   keep <- vapply(conflicts, function(envs) {
     any(sub("^package:", "", envs) %in% activerse_packages())
   }, logical(1))
