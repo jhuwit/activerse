@@ -14,8 +14,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-`activerse` is a lightweight helper package that attaches `actibase`, `actiread`,
-and `actimetrics` together.
+`activerse` is a lightweight helper package that attaches
+[`actibase`](https://github.com/jhuwit/actibase),
+[`actiread`](https://github.com/jhuwit/actiread), and
+[`actimetrics`](https://github.com/jhuwit/actimetrics) together.
 
 It is designed to behave a bit like `tidyverse`: load one package, then use the
 functions from the actigraphy packages directly.
@@ -26,6 +28,14 @@ functions from the actigraphy packages directly.
 # install.packages("remotes")
 remotes::install_github("jhuwit/activerse")
 ```
+
+## Packages
+
+| Package | Repository | R CMD check |
+| --- | --- | --- |
+| `actibase` | [jhuwit/actibase](https://github.com/jhuwit/actibase) | [![R CMD check](https://github.com/jhuwit/actibase/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actibase/actions/workflows/R-CMD-check.yaml) |
+| `actiread` | [jhuwit/actiread](https://github.com/jhuwit/actiread) | [![R CMD check](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml) |
+| `actimetrics` | [jhuwit/actimetrics](https://github.com/jhuwit/actimetrics) | [![R CMD check](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml) |
 
 ## Load the packages
 
@@ -43,8 +53,8 @@ The packages ship with small example datasets that are useful for quick tests.
 data(acti_raw_data, package = "actibase")
 data(acti_count_data, package = "actimetrics")
 
-acti_raw_data
-acti_count_data
+head(acti_raw_data)
+head(acti_count_data)
 ```
 
 ## Use `actimetrics`
@@ -53,11 +63,11 @@ Once `activerse` is attached, `actimetrics` functions are available directly.
 You can also call them with the `actimetrics::` prefix if you prefer being
 explicit.
 
-### Calculate counts
+### Calculate ENMO
 
 ```{r}
-counts <- acti_calculate_counts(acti_raw_data, verbose = FALSE)
-head(counts)
+enmo <- acti_calculate_enmo(data = acti_raw_data)
+head(enmo)
 ```
 
 ### Calculate activity index
@@ -73,16 +83,11 @@ activity_index <- acti_calculate_activity_index(
 head(activity_index)
 ```
 
-### Calculate MIMS
+### Calculate MAD
 
 ```{r}
-mims <- acti_calculate_mims(
-  acti_raw_data,
-  unit = "1 min",
-  ensure_all_time = TRUE
-)
-
-head(mims)
+mad <- acti_calculate_mad(data = acti_raw_data)
+head(mad)
 ```
 
 ## More examples
@@ -96,4 +101,3 @@ acti_calculate_wear(acti_raw_data)
 acti_calculate_nonwear(acti_raw_data)
 acti_calculate_stepcount(acti_raw_data)
 ```
-
