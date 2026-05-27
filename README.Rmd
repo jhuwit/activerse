@@ -1,0 +1,99 @@
+---
+title: "activerse"
+output:
+  github_document:
+    toc: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+`activerse` is a lightweight helper package that attaches `actibase`, `actiread`,
+and `actimetrics` together.
+
+It is designed to behave a bit like `tidyverse`: load one package, then use the
+functions from the actigraphy packages directly.
+
+## Installation
+
+```{r, eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("jhuwit/activerse")
+```
+
+## Load the packages
+
+```{r}
+library(activerse)
+
+search()[grepl("^package:(actibase|actiread|actimetrics)$", search())]
+```
+
+## Example data
+
+The packages ship with small example datasets that are useful for quick tests.
+
+```{r}
+data(acti_raw_data, package = "actibase")
+data(acti_count_data, package = "actimetrics")
+
+acti_raw_data
+acti_count_data
+```
+
+## Use `actimetrics`
+
+Once `activerse` is attached, `actimetrics` functions are available directly.
+You can also call them with the `actimetrics::` prefix if you prefer being
+explicit.
+
+### Calculate counts
+
+```{r}
+counts <- acti_calculate_counts(acti_raw_data, verbose = FALSE)
+head(counts)
+```
+
+### Calculate activity index
+
+```{r}
+activity_index <- acti_calculate_activity_index(
+  acti_raw_data,
+  unit = "1 min",
+  ensure_all_time = TRUE,
+  verbose = FALSE
+)
+
+head(activity_index)
+```
+
+### Calculate MIMS
+
+```{r}
+mims <- acti_calculate_mims(
+  acti_raw_data,
+  unit = "1 min",
+  ensure_all_time = TRUE
+)
+
+head(mims)
+```
+
+## More examples
+
+`actimetrics` also includes functions for wear/non-wear detection, step count
+estimation, and other processing helpers:
+
+```{r, eval=FALSE}
+acti_process(acti_raw_data)
+acti_calculate_wear(acti_raw_data)
+acti_calculate_nonwear(acti_raw_data)
+acti_calculate_stepcount(acti_raw_data)
+```
+
