@@ -12,10 +12,12 @@ RoxygenNote: 7.3.3
 Imports:
     actibase,
     actiread,
-    actimetrics
+    actimetrics,
+    actisensorlog
 Remotes:
     jhuwit/actibase,
     jhuwit/actiread,
-    jhuwit/actimetrics
+    jhuwit/actimetrics,
+    jhuwit/actisensorlog
 URL: https://github.com/jhuwit/activerse
 BugReports: https://github.com/jhuwit/activerse/issues

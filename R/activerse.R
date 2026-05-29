@@ -1,5 +1,10 @@
 activerse_packages <- function() {
-  c("actibase", "actiread", "actimetrics")
+  c(
+    "actibase",
+    "actiread",
+    "actimetrics",
+    "actisensorlog"
+  )
 }
 
 activerse_attach <- function(packages = activerse_packages(), message = TRUE) {

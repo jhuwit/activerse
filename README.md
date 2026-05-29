@@ -1,10 +1,14 @@
 activerse
 ================
 
+<!-- activerse-intro:start -->
+
 `activerse` is a lightweight helper package that attaches
 [`actibase`](https://github.com/jhuwit/actibase),
-[`actiread`](https://github.com/jhuwit/actiread), and
-[`actimetrics`](https://github.com/jhuwit/actimetrics) together.
+[`actiread`](https://github.com/jhuwit/actiread),
+[`actimetrics`](https://github.com/jhuwit/actimetrics), and
+[`actisensorlog`](https://github.com/jhuwit/actisensorlog) together.
+<!-- activerse-intro:end -->
 
 It is designed to behave a bit like `tidyverse`: load one package, then
 use the functions from the actigraphy packages directly.
@@ -18,19 +22,26 @@ remotes::install_github("jhuwit/activerse")
 
 ## Packages
 
+<!-- activerse-packages:start -->
+
 | Package | Repository | R CMD check |
 |----|----|----|
 | `actibase` | [jhuwit/actibase](https://github.com/jhuwit/actibase) | [![R CMD check](https://github.com/jhuwit/actibase/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actibase/actions/workflows/R-CMD-check.yaml) |
 | `actiread` | [jhuwit/actiread](https://github.com/jhuwit/actiread) | [![R CMD check](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml) |
 | `actimetrics` | [jhuwit/actimetrics](https://github.com/jhuwit/actimetrics) | [![R CMD check](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml) |
+| `actisensorlog` | [jhuwit/actisensorlog](https://github.com/jhuwit/actisensorlog) | [![R CMD check](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml) |
+
+<!-- activerse-packages:end -->
 
 ## Load the packages
 
 ``` r
 library(activerse)
 
-search()[grepl("^package:(actibase|actiread|actimetrics)$", search())]
+# activerse-load:start
+search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog)$", search())]
 #> [1] "package:actimetrics" "package:actiread"    "package:actibase"
+# activerse-load:end
 ```
 
 ## Example data
@@ -62,9 +73,9 @@ head(acti_count_data)
 
 ## Use `actimetrics`
 
-Once `activerse` is attached, `actimetrics` functions are available
-directly. You can also call them with the `actimetrics::` prefix if you
-prefer being explicit.
+Once `activerse` is attached, functions from the activerse packages are
+available directly. You can also call them with the relevant `pkg::`
+prefix if you prefer being explicit.
 
 ### Calculate ENMO
 
@@ -131,3 +142,22 @@ acti_calculate_wear(acti_raw_data)
 acti_calculate_nonwear(acti_raw_data)
 acti_calculate_stepcount(acti_raw_data)
 ```
+
+## Updating activerse
+
+When a new package is added to activerse, update the package list, the
+README, and the attach helper by running:
+
+``` r
+./scripts/update-activerse.R actisensorlog
+```
+
+If the new package lives under a different GitHub owner, pass
+`--owner=`:
+
+``` r
+./scripts/update-activerse.R --owner=some-owner actisensorlog
+```
+
+The script updates `DESCRIPTION`, `R/activerse.R`, and both README files
+in one pass.
