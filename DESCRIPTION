@@ -13,11 +13,13 @@ Imports:
     actibase,
     actiread,
     actimetrics,
-    actisensorlog
+    actisensorlog,
+    actiwalkability
 Remotes:
     jhuwit/actibase,
     jhuwit/actiread,
     jhuwit/actimetrics,
-    jhuwit/actisensorlog
+    jhuwit/actisensorlog,
+    jhuwit/actiwalkability
 URL: https://github.com/jhuwit/activerse
 BugReports: https://github.com/jhuwit/activerse/issues

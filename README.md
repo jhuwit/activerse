@@ -6,8 +6,9 @@ activerse
 `activerse` is a lightweight helper package that attaches
 [`actibase`](https://github.com/jhuwit/actibase),
 [`actiread`](https://github.com/jhuwit/actiread),
-[`actimetrics`](https://github.com/jhuwit/actimetrics), and
-[`actisensorlog`](https://github.com/jhuwit/actisensorlog) together.
+[`actimetrics`](https://github.com/jhuwit/actimetrics),
+[`actisensorlog`](https://github.com/jhuwit/actisensorlog), and
+[`actiwalkability`](https://github.com/jhuwit/actiwalkability) together.
 <!-- activerse-intro:end -->
 
 It is designed to behave a bit like `tidyverse`: load one package, then
@@ -30,6 +31,7 @@ remotes::install_github("jhuwit/activerse")
 | `actiread` | [jhuwit/actiread](https://github.com/jhuwit/actiread) | [![R CMD check](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml) |
 | `actimetrics` | [jhuwit/actimetrics](https://github.com/jhuwit/actimetrics) | [![R CMD check](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml) |
 | `actisensorlog` | [jhuwit/actisensorlog](https://github.com/jhuwit/actisensorlog) | [![R CMD check](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml) |
+| `actiwalkability` | [jhuwit/actiwalkability](https://github.com/jhuwit/actiwalkability) | [![R CMD check](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml) |
 
 <!-- activerse-packages:end -->
 
@@ -39,7 +41,7 @@ remotes::install_github("jhuwit/activerse")
 library(activerse)
 
 # activerse-load:start
-search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog)$", search())]
+search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog|actiwalkability)$", search())]
 #> [1] "package:actimetrics" "package:actiread"    "package:actibase"
 # activerse-load:end
 ```

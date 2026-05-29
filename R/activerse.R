@@ -3,7 +3,8 @@ activerse_packages <- function() {
     "actibase",
     "actiread",
     "actimetrics",
-    "actisensorlog"
+    "actisensorlog",
+    "actiwalkability"
   )
 }
 
