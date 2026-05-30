@@ -1,11 +1,15 @@
 Package: activerse
 Title: Attach Activerse Packages
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+Authors@R: c(
+    person(given = "John",
+           family = "Muschelli",
+           role = c("aut", "cre"),
+           email = "muschellij2@gmail.com")
+    )
 Description: A lightweight package that attaches actibase, actiread, and
     actimetrics together, similar to tidyverse.
-License: MIT
+License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Imports:
