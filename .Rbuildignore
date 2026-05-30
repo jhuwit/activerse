@@ -3,3 +3,4 @@
 ^\.positai$
 ^\.claude$
 ^scripts$
+^README\.Rmd$

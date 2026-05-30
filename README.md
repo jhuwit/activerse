@@ -42,7 +42,9 @@ library(activerse)
 
 # activerse-load:start
 search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog|actiwalkability)$", search())]
-#> [1] "package:actimetrics" "package:actiread"    "package:actibase"
+#> [1] "package:actiwalkability" "package:actisensorlog"  
+#> [3] "package:actimetrics"     "package:actiread"       
+#> [5] "package:actibase"
 # activerse-load:end
 ```
 
