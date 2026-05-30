@@ -8,13 +8,14 @@ Description: A lightweight package that attaches actibase, actiread, and
 License: MIT
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 Imports:
     actibase,
     actiread,
     actimetrics,
     actisensorlog,
     actiwalkability
+Suggests:
+    testthat (>= 3.0.0)
 Remotes:
     jhuwit/actibase,
     jhuwit/actiread,
@@ -23,3 +24,5 @@ Remotes:
     jhuwit/actiwalkability
 URL: https://github.com/jhuwit/activerse
 BugReports: https://github.com/jhuwit/activerse/issues
+Config/roxygen2/version: 8.0.0
+Config/testthat/edition: 3
