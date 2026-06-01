@@ -180,7 +180,7 @@ activerse_conflict_line <- function(fun, envs) {
   }
 
   paste0(
-    "✖ ",
+    "x ",
     winner,
     "::",
     fun,
@@ -195,11 +195,11 @@ activerse_conflict_message <- function(conflicts) {
   }
 
   header <- paste0(
-    "── Conflicts ────────────────────────────────────────── activerse ",
+    "-- Conflicts ------------------------------------------ activerse ",
     activerse_package_version(),
-    " ──"
+    " --"
   )
-  hint <- "ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors"
+  hint <- "i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors"
 
   paste(c(header, conflicts, hint), collapse = "\n")
 }

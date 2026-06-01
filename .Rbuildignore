@@ -1,5 +1,10 @@
 ^activerse\.Rproj$
 ^\.Rproj\.user$
+^\.git$
+^\.gitignore$
+^\.Rhistory$
+^\.DS_Store$
+^\.\.Rcheck$
 ^\.positai$
 ^\.claude$
 ^scripts$
