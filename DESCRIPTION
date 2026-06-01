@@ -4,21 +4,23 @@ Version: 0.0.0.9000
 Authors@R: c(
     person(given = "John",
            family = "Muschelli",
+           email = "muschellij2@gmail.com",
            role = c("aut", "cre"),
-           email = "muschellij2@gmail.com")
+           comment = c(ORCID = "0000-0001-6469-1750")
+           )
     )
 Description: A lightweight package that attaches actibase, actiread, and
-    actimetrics together, similar to tidyverse.
+    actimetrics, actisensorlog, and actiwalkability together, similar to
+    tidyverse.
 License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Imports:
+Suggests:
     actibase,
     actiread,
     actimetrics,
     actisensorlog,
-    actiwalkability
-Suggests:
+    actiwalkability,
     testthat (>= 3.0.0)
 Remotes:
     jhuwit/actibase,
