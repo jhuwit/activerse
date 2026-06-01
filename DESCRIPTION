@@ -21,13 +21,15 @@ Suggests:
     actimetrics,
     actisensorlog,
     actiwalkability,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    actiquantiles
 Remotes:
     jhuwit/actibase,
     jhuwit/actiread,
     jhuwit/actimetrics,
     jhuwit/actisensorlog,
-    jhuwit/actiwalkability
+    jhuwit/actiwalkability,
+    jhuwit/actiquantiles
 URL: https://github.com/jhuwit/activerse
 BugReports: https://github.com/jhuwit/activerse/issues
 Config/roxygen2/version: 8.0.0
