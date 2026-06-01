@@ -7,8 +7,10 @@ activerse
 [`actibase`](https://github.com/jhuwit/actibase),
 [`actiread`](https://github.com/jhuwit/actiread),
 [`actimetrics`](https://github.com/jhuwit/actimetrics),
-[`actisensorlog`](https://github.com/jhuwit/actisensorlog), and
-[`actiwalkability`](https://github.com/jhuwit/actiwalkability) together.
+[`actisensorlog`](https://github.com/jhuwit/actisensorlog),
+[`actiwalkability`](https://github.com/jhuwit/actiwalkability),
+[`testthat`](https://github.com/testthat), and
+[`actiquantiles`](https://github.com/jhuwit/actiquantiles) together.
 <!-- activerse-intro:end -->
 
 It is designed to behave a bit like `tidyverse`: load one package, then
@@ -32,6 +34,8 @@ remotes::install_github("jhuwit/activerse")
 | `actimetrics` | [jhuwit/actimetrics](https://github.com/jhuwit/actimetrics) | [![R CMD check](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml) |
 | `actisensorlog` | [jhuwit/actisensorlog](https://github.com/jhuwit/actisensorlog) | [![R CMD check](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml) |
 | `actiwalkability` | [jhuwit/actiwalkability](https://github.com/jhuwit/actiwalkability) | [![R CMD check](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml) |
+| `testthat` | [testthat](https://github.com/testthat) | [![R CMD check](https://github.com/testthat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/testthat/actions/workflows/R-CMD-check.yaml) |
+| `actiquantiles` | [jhuwit/actiquantiles](https://github.com/jhuwit/actiquantiles) | [![R CMD check](https://github.com/jhuwit/actiquantiles/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiquantiles/actions/workflows/R-CMD-check.yaml) |
 
 <!-- activerse-packages:end -->
 
@@ -41,7 +45,7 @@ remotes::install_github("jhuwit/activerse")
 library(activerse)
 
 # activerse-load:start
-search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog|actiwalkability)$", search())]
+search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog|actiwalkability|testthat|actiquantiles)$", search())]
 #> [1] "package:actiwalkability" "package:actisensorlog"  
 #> [3] "package:actimetrics"     "package:actiread"       
 #> [5] "package:actibase"

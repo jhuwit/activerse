@@ -174,7 +174,7 @@ replace_block <- function(lines, start_marker, end_marker, replacement) {
 }
 
 description <- read.dcf(desc_path, all = TRUE)[1, ]
-imports <- parse_dcf_packages(description[["Imports"]])
+imports <- parse_dcf_packages(description[["Suggests"]])
 remotes <- parse_dcf_remotes(description[["Remotes"]])
 
 if (length(new_packages)) {
@@ -185,7 +185,7 @@ if (length(new_packages)) {
     remotes <- unique(c(remotes, paste0(owner, "/", missing)))
 
     desc_lines <- readLines(desc_path, warn = FALSE)
-    desc_lines <- replace_dcf_field(desc_lines, "Imports", imports)
+    desc_lines <- replace_dcf_field(desc_lines, "Suggests", imports)
     desc_lines <- replace_dcf_field(desc_lines, "Remotes", remotes)
     writeLines(desc_lines, desc_path, sep = "\n")
     message("Updated DESCRIPTION with: ", paste(missing, collapse = ", "))
