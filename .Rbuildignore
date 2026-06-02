@@ -12,3 +12,5 @@
 ^\.github$
 ^vignettes/*_cache$
 ^README_cache$
+^vignettes/fully_reproducible_mapping_cache$
+^vignettes/data$

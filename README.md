@@ -1,6 +1,11 @@
 activerse
 ================
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/jhuwit/activerse/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/activerse/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 <!-- activerse-intro:start -->
 
 `activerse` is a lightweight helper package that attaches
