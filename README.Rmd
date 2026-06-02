@@ -14,9 +14,15 @@ knitr::opts_chunk$set(
 )
 ```
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/jhuwit/activerse/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/activerse/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+  
+  
 <!-- activerse-intro:start -->
 `activerse` is a lightweight helper package that attaches [`actibase`](https://github.com/jhuwit/actibase), [`actiread`](https://github.com/jhuwit/actiread), [`actimetrics`](https://github.com/jhuwit/actimetrics), [`actisensorlog`](https://github.com/jhuwit/actisensorlog), [`actiwalkability`](https://github.com/jhuwit/actiwalkability), [`testthat`](https://github.com/testthat), and [`actiquantiles`](https://github.com/jhuwit/actiquantiles) together.
 <!-- activerse-intro:end -->
+
 
 It is designed to behave a bit like `tidyverse`: load one package, then use the
 functions from the actigraphy packages directly.

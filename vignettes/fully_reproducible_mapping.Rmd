@@ -201,7 +201,7 @@ acti_run <- function(data, calibrate = FALSE,
     dplyr::full_join(steps)
   
   if (run_forest) {
-    if (!walking::have_forest()) {
+    if (!reticulate::py_module_available("forest")) {
       run_forest = FALSE
       cli::cli_warn(paste0("`run_forest` = TRUE, but 
                     {.help [have_forest](walking::have_forest)} ", 
