@@ -33,6 +33,7 @@ Suggests:
     hms,
     readr,
     cli,
+    agcounts (>= 0.6.7),
     reticulate,
     stepcount
 Remotes:
@@ -42,6 +43,7 @@ Remotes:
     jhuwit/actisensorlog,
     jhuwit/actiwalkability,
     jhuwit/actiquantiles,
+    bhelsel/agcounts,
     jhuwit/stepcount
 URL: https://github.com/jhuwit/activerse
 BugReports: https://github.com/jhuwit/activerse/issues
