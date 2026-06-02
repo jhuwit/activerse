@@ -44,15 +44,12 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - uses: actions/setup-python@v4
-        if: matrix.config.python != 'debug'
+      - name: Set up Multiple Python Versions
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.11
-
-      - uses: actions/setup-python@v4
-        if: matrix.config.python != 'debug'
-        with:
-          python-version: 3.10
+          python-version: |
+            3.10
+            3.11
 
       - uses: r-lib/actions/check-r-package@v2
         with:
