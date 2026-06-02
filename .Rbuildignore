@@ -10,3 +10,5 @@
 ^scripts$
 ^README\.Rmd$
 ^\.github$
+^vignettes/*_cache$
+^README_cache$
