@@ -109,9 +109,63 @@ acti_calculate_nonwear(acti_raw_data)
 acti_calculate_stepcount(acti_raw_data)
 ```
 
+## Running Walking with Different Python Environments
+
+If you want to use both walking estimation from `forest` and `stepcount`, you can run them in separate R processes using `callr` to avoid Python package conflicts. 
+Here's how you can do it:
+
+```{r, cache = TRUE}
+library(callr)
+library(activerse)
+gt3x_path = acti_example_gt3x()
+data <- acti_read_gt3x(gt3x_path, cleanup = TRUE)
+
+stepcount_callr = function(data,
+                           ...) {
+  
+  reticulate::py_require("stepcount==3.11.0", python_version = "3.10")
+  sc <- reticulate::import("stepcount")
+  stepcount::stepcount_check()
+  
+  res = actimetrics::acti_calculate_stepcount(data, ...)
+  return(res)
+}
+
+# 2. Run the isolated background R process
+result <- callr::r(
+  func = stepcount_callr,
+  show = TRUE,
+  args = list(data = data) # Safely injects data into the process
+)
+head(result)
+
+forest_callr = function(data,
+                        ...) {
+  reticulate::py_require(
+    "git+https://github.com/onnela-lab/forest@45fb41038bd46c25d9e6a4442aa74fa03b501317", 
+    python_version = "3.11")
+  fr = reticulate::import("forest")
+  oak = fr$oak$base
+  oak
+  res = actimetrics::acti_calculate_forest(data, ...)
+  return(res)
+}
+
+# 2. Run the isolated background R process
+fresult <- callr::r(
+  func = forest_callr,
+  show = TRUE,
+  args = list(data = data) # Safely injects data into the process
+)
+head(fresult)
+```
+
+
+In the previous example we use `reticulate::py_require` to install python dependencies on demand, but recommend an environment (e.g. conda) with the required packages pre-installed for better performance and use on multiple subjects. 
+
 ## Updating activerse
 
-When a new package is added to activerse, update the package list, the README,
+When a new package is added to `activerse`, update the package list, the README,
 and the attach helper by running:
 
 ```{r, eval=FALSE}
