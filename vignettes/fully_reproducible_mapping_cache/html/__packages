@@ -1,0 +1,14 @@
+colorout
+reticulate
+dplyr
+tidyr
+janitor
+readxl
+activerse
+actibase
+actiread
+actimetrics
+actisensorlog
+actiwalkability
+testthat
+actiquantiles

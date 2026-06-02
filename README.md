@@ -46,9 +46,10 @@ library(activerse)
 
 # activerse-load:start
 search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog|actiwalkability|testthat|actiquantiles)$", search())]
-#> [1] "package:actiwalkability" "package:actisensorlog"  
-#> [3] "package:actimetrics"     "package:actiread"       
-#> [5] "package:actibase"
+#> [1] "package:actiquantiles"   "package:testthat"       
+#> [3] "package:actiwalkability" "package:actisensorlog"  
+#> [5] "package:actimetrics"     "package:actiread"       
+#> [7] "package:actibase"
 # activerse-load:end
 ```
 
@@ -151,9 +152,105 @@ acti_calculate_nonwear(acti_raw_data)
 acti_calculate_stepcount(acti_raw_data)
 ```
 
+## Running Walking with Different Python Environments
+
+If you want to use both walking estimation from `forest` and
+`stepcount`, you can run them in separate R processes using `callr` to
+avoid Python package conflicts. Here’s how you can do it:
+
+``` r
+library(callr)
+library(activerse)
+gt3x_path = acti_example_gt3x()
+data <- acti_read_gt3x(gt3x_path, cleanup = TRUE)
+
+stepcount_callr = function(data,
+                           ...) {
+  
+  reticulate::py_require("stepcount==3.11.0", python_version = "3.10")
+  sc <- reticulate::import("stepcount")
+  stepcount::stepcount_check()
+  
+  res = actimetrics::acti_calculate_stepcount(data, ...)
+  return(res)
+}
+
+# 2. Run the isolated background R process
+result <- callr::r(
+  func = stepcount_callr,
+  show = TRUE,
+  args = list(data = data) # Safely injects data into the process
+)
+#> Loading model...
+#> Downloading https://wearables-files.ndph.ox.ac.uk/files/models/stepcount/ssl-20230208.joblib.lzma...
+#> Checking Data
+#> Writing file to CSV...
+#> Reading in Data for Stepcount
+#> Predicting from Model
+#> Running step counter...
+#> Gravity calibration...Gravity calibration... Done! (0.04s)
+#> Nonwear detection...Nonwear detection... Done! (0.05s)
+#> Resampling...Resampling... Done! (0.05s)
+#> Defining windows...
+#>   0%|          | 0/241 [00:00<?, ?it/s]100%|██████████| 241/241 [00:00<00:00, 2300.90it/s]
+#> Using local /Users/johnmuschelli/Library/Caches/org.R-project.R/R/reticulate/uv/cache/archive-v0/12AzDesQwp07_KC6/lib/python3.10/site-packages/stepcount/torch_hub_cache/OxWearables_ssl-wearables_v1.0.0
+#> Classifying windows...
+#>   0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.04s/it]
+#> Processing Result
+#> /usr/local/Cellar/python@3.10/3.10.20_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+#>   warnings.warn('resource_tracker: There appear to be %d '
+head(result)
+#> # A tibble: 6 × 3
+#>   time                steps walking
+#>   <dttm>              <dbl> <lgl>  
+#> 1 2019-09-17 18:40:00    34 TRUE   
+#> 2 2019-09-17 18:41:00    82 TRUE   
+#> 3 2019-09-17 18:42:00   104 TRUE   
+#> 4 2019-09-17 18:43:00   105 TRUE   
+#> 5 2019-09-17 18:44:00    15 TRUE   
+#> 6 2019-09-17 18:45:00     0 FALSE
+
+forest_callr = function(data,
+                        ...) {
+  reticulate::py_require(
+    "git+https://github.com/onnela-lab/forest@45fb41038bd46c25d9e6a4442aa74fa03b501317", 
+    python_version = "3.11")
+  fr = reticulate::import("forest")
+  oak = fr$oak$base
+  oak
+  res = actimetrics::acti_calculate_forest(data, ...)
+  return(res)
+}
+
+# 2. Run the isolated background R process
+fresult <- callr::r(
+  func = forest_callr,
+  show = TRUE,
+  args = list(data = data) # Safely injects data into the process
+)
+#> Preprocessing Bout
+#> Bout is Preprocessed
+#> OAK: Find walking is done
+head(fresult)
+#> # A tibble: 6 × 2
+#>   time                 steps
+#>   <dttm>               <dbl>
+#> 1 2019-09-17 18:40:00  12.3 
+#> 2 2019-09-17 18:41:00  53.9 
+#> 3 2019-09-17 18:42:00 105.  
+#> 4 2019-09-17 18:43:00 105.  
+#> 5 2019-09-17 18:44:00   6.75
+#> 6 2019-09-17 18:45:00   0
+```
+
+In the previous example we use `reticulate::py_require` to install
+python dependencies on demand, but recommend an environment (e.g. conda)
+with the required packages pre-installed for better performance and use
+on multiple subjects.
+
 ## Updating activerse
 
-When a new package is added to activerse, update the package list, the
+When a new package is added to `activerse`, update the package list, the
 README, and the attach helper by running:
 
 ``` r
