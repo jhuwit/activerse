@@ -1,0 +1,266 @@
+# activerse
+
+`activerse` is a lightweight helper package that attaches
+[`actibase`](https://github.com/jhuwit/actibase),
+[`actiread`](https://github.com/jhuwit/actiread),
+[`actimetrics`](https://github.com/jhuwit/actimetrics),
+[`actisensorlog`](https://github.com/jhuwit/actisensorlog),
+[`actiwalkability`](https://github.com/jhuwit/actiwalkability), and
+[`actiquantiles`](https://github.com/jhuwit/actiquantiles) together.
+
+It is designed to behave a bit like `tidyverse`: load one package, then
+use the functions from the actigraphy packages directly.
+
+## Installation
+
+``` r
+
+# install.packages("remotes")
+remotes::install_github("jhuwit/activerse")
+```
+
+## Packages
+
+| Package | Repository | R CMD check |
+|----|----|----|
+| `actibase` | [jhuwit/actibase](https://github.com/jhuwit/actibase) | [![R CMD check](https://github.com/jhuwit/actibase/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actibase/actions/workflows/R-CMD-check.yaml) |
+| `actiread` | [jhuwit/actiread](https://github.com/jhuwit/actiread) | [![R CMD check](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml) |
+| `actimetrics` | [jhuwit/actimetrics](https://github.com/jhuwit/actimetrics) | [![R CMD check](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml) |
+| `actisensorlog` | [jhuwit/actisensorlog](https://github.com/jhuwit/actisensorlog) | [![R CMD check](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml) |
+| `actiwalkability` | [jhuwit/actiwalkability](https://github.com/jhuwit/actiwalkability) | [![R CMD check](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml) |
+| `actiquantiles` | [jhuwit/actiquantiles](https://github.com/jhuwit/actiquantiles) | [![R CMD check](https://github.com/jhuwit/actiquantiles/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiquantiles/actions/workflows/R-CMD-check.yaml) |
+
+## Load the packages
+
+``` r
+
+library(activerse)
+
+# activerse-load:start
+search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog|actiwalkability|actiquantiles)$", search())]
+#> [1] "package:actiquantiles"   "package:actiwalkability"
+#> [3] "package:actisensorlog"   "package:actimetrics"    
+#> [5] "package:actiread"        "package:actibase"
+# activerse-load:end
+```
+
+## Example data
+
+The packages ship with small example datasets that are useful for quick
+tests.
+
+``` r
+
+data(acti_raw_data, package = "actibase")
+data(acti_count_data, package = "actimetrics")
+
+head(acti_raw_data)
+#>                  time     X      Y     Z
+#> 1 2019-09-17 18:40:00 0.000  0.008 0.996
+#> 2 2019-09-17 18:40:00 0.016  0.000 1.008
+#> 3 2019-09-17 18:40:00 0.020 -0.008 1.004
+#> 4 2019-09-17 18:40:00 0.016 -0.012 1.012
+#> 5 2019-09-17 18:40:00 0.016 -0.008 1.008
+#> 6 2019-09-17 18:40:00 0.008 -0.008 1.008
+head(acti_count_data)
+#>                  time axis1 axis2 axis3 counts
+#> 1 2019-09-17 18:40:00  5435  9659  8253  13818
+#> 2 2019-09-17 18:41:00  9125  9197  4131  13598
+#> 3 2019-09-17 18:42:00  4404  4367  3494   7119
+#> 4 2019-09-17 18:43:00  3267  3170  2543   5214
+#> 5 2019-09-17 18:44:00  1405   896   894   1891
+#> 6 2019-09-17 18:45:00     0     0     0      0
+```
+
+## Use `actimetrics`
+
+Once `activerse` is attached, functions from the activerse packages are
+available directly. You can also call them with the relevant `pkg::`
+prefix if you prefer being explicit.
+
+### Calculate ENMO
+
+``` r
+
+enmo <- acti_calculate_enmo(data = acti_raw_data)
+head(enmo)
+#> # A tibble: 6 × 2
+#>   HEADER_TIME_STAMP   ENMO_t
+#>   <dttm>               <dbl>
+#> 1 2019-09-17 18:40:00 0.688 
+#> 2 2019-09-17 18:41:00 0.708 
+#> 3 2019-09-17 18:42:00 0.183 
+#> 4 2019-09-17 18:43:00 0.150 
+#> 5 2019-09-17 18:44:00 0.0278
+#> 6 2019-09-17 18:45:00 0.0139
+```
+
+### Calculate activity index
+
+``` r
+
+activity_index <- acti_calculate_activity_index(
+  acti_raw_data,
+  unit = "1 min",
+  ensure_all_time = TRUE,
+  verbose = FALSE
+)
+
+head(activity_index)
+#> # A tibble: 6 × 2
+#>   HEADER_TIME_STAMP      AI
+#>   <dttm>              <dbl>
+#> 1 2019-09-17 18:40:00 23.2 
+#> 2 2019-09-17 18:41:00 22.9 
+#> 3 2019-09-17 18:42:00 11.9 
+#> 4 2019-09-17 18:43:00 10.5 
+#> 5 2019-09-17 18:44:00  2.35
+#> 6 2019-09-17 18:45:00  0
+```
+
+### Calculate MAD
+
+``` r
+
+mad <- acti_calculate_mad(data = acti_raw_data)
+head(mad)
+#> # A tibble: 6 × 8
+#>   HEADER_TIME_STAMP       SD   SD_t AI_DEFINED    MAD   MEDAD mean_r ENMO_t
+#>   <dttm>               <dbl>  <dbl>      <dbl>  <dbl>   <dbl>  <dbl>  <dbl>
+#> 1 2019-09-17 18:40:00 1.87   1.85        1.33  1.09   0.630     1.65 0.688 
+#> 2 2019-09-17 18:41:00 1.54   1.53        1.08  0.853  0.552     1.69 0.708 
+#> 3 2019-09-17 18:42:00 0.253  0.204       0.278 0.207  0.188     1.14 0.183 
+#> 4 2019-09-17 18:43:00 0.228  0.175       0.228 0.191  0.178     1.10 0.150 
+#> 5 2019-09-17 18:44:00 0.0815 0.0637      0.309 0.0300 0.00330   1.02 0.0278
+#> 6 2019-09-17 18:45:00 0      0           0     0      0         1.01 0.0139
+```
+
+## More examples
+
+`actimetrics` also includes functions for wear/non-wear detection, step
+count estimation, and other processing helpers:
+
+``` r
+
+acti_process(acti_raw_data)
+acti_calculate_wear(acti_raw_data)
+acti_calculate_nonwear(acti_raw_data)
+acti_calculate_stepcount(acti_raw_data)
+```
+
+## Running Walking with Different Python Environments
+
+If you want to use both walking estimation from `forest` and
+`stepcount`, you can run them in separate R processes using `callr` to
+avoid Python package conflicts. Here’s how you can do it:
+
+``` r
+
+library(callr)
+library(activerse)
+gt3x_path = acti_example_gt3x()
+data <- acti_read_gt3x(gt3x_path, cleanup = TRUE)
+
+stepcount_callr = function(data,
+                           ...) {
+  
+  reticulate::py_require("stepcount==3.11.0", python_version = "3.10")
+  sc <- reticulate::import("stepcount")
+  stepcount::stepcount_check()
+  
+  res = actimetrics::acti_calculate_stepcount(data, ...)
+  return(res)
+}
+
+# 2. Run the isolated background R process
+result <- callr::r(
+  func = stepcount_callr,
+  show = TRUE,
+  args = list(data = data) # Safely injects data into the process
+)
+#> Loading model...
+#> Downloading https://wearables-files.ndph.ox.ac.uk/files/models/stepcount/ssl-20230208.joblib.lzma...
+#> Checking Data
+#> Writing file to CSV...
+#> Reading in Data for Stepcount
+#> Predicting from Model
+#> Running step counter...
+#> Gravity calibration...Gravity calibration... Done! (0.04s)
+#> Nonwear detection...Nonwear detection... Done! (0.05s)
+#> Resampling...Resampling... Done! (0.05s)
+#> Defining windows...
+#>   0%|          | 0/241 [00:00<?, ?it/s]100%|██████████| 241/241 [00:00<00:00, 2300.90it/s]
+#> Using local /Users/johnmuschelli/Library/Caches/org.R-project.R/R/reticulate/uv/cache/archive-v0/12AzDesQwp07_KC6/lib/python3.10/site-packages/stepcount/torch_hub_cache/OxWearables_ssl-wearables_v1.0.0
+#> Classifying windows...
+#>   0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:02<00:00,  2.04s/it]
+#> Processing Result
+#> /usr/local/Cellar/python@3.10/3.10.20_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+#>   warnings.warn('resource_tracker: There appear to be %d '
+head(result)
+#> # A tibble: 6 × 3
+#>   time                steps walking
+#>   <dttm>              <dbl> <lgl>  
+#> 1 2019-09-17 18:40:00    34 TRUE   
+#> 2 2019-09-17 18:41:00    82 TRUE   
+#> 3 2019-09-17 18:42:00   104 TRUE   
+#> 4 2019-09-17 18:43:00   105 TRUE   
+#> 5 2019-09-17 18:44:00    15 TRUE   
+#> 6 2019-09-17 18:45:00     0 FALSE
+
+forest_callr = function(data,
+                        ...) {
+  reticulate::py_require(
+    "git+https://github.com/onnela-lab/forest@45fb41038bd46c25d9e6a4442aa74fa03b501317", 
+    python_version = "3.11")
+  fr = reticulate::import("forest")
+  oak = fr$oak$base
+  oak
+  res = actimetrics::acti_calculate_forest(data, ...)
+  return(res)
+}
+
+# 2. Run the isolated background R process
+fresult <- callr::r(
+  func = forest_callr,
+  show = TRUE,
+  args = list(data = data) # Safely injects data into the process
+)
+#> Preprocessing Bout
+#> Bout is Preprocessed
+#> OAK: Find walking is done
+head(fresult)
+#> # A tibble: 6 × 2
+#>   time                 steps
+#>   <dttm>               <dbl>
+#> 1 2019-09-17 18:40:00  12.3 
+#> 2 2019-09-17 18:41:00  53.9 
+#> 3 2019-09-17 18:42:00 105.  
+#> 4 2019-09-17 18:43:00 105.  
+#> 5 2019-09-17 18:44:00   6.75
+#> 6 2019-09-17 18:45:00   0
+```
+
+In the previous example we use
+[`reticulate::py_require`](https://rstudio.github.io/reticulate/reference/py_require.html)
+to install python dependencies on demand, but recommend an environment
+(e.g. conda) with the required packages pre-installed for better
+performance and use on multiple subjects.
+
+## Updating activerse
+
+When a new package is added to `activerse`, update the package list, the
+README, and the attach helper by running:
+
+``` r
+./scripts/update-activerse.R actisensorlog
+```
+
+If the new package lives under a different GitHub owner, pass
+`--owner=`:
+
+``` r
+./scripts/update-activerse.R --owner=some-owner actisensorlog
+```
+
+The script updates `DESCRIPTION`, `R/activerse.R`, and both README files
+in one pass.
