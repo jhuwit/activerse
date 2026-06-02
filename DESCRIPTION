@@ -33,6 +33,7 @@ Suggests:
     hms,
     readr,
     cli,
+    actigraph.sleepr,
     agcounts (>= 0.6.7),
     reticulate,
     stepcount
@@ -44,6 +45,7 @@ Remotes:
     jhuwit/actiwalkability,
     jhuwit/actiquantiles,
     bhelsel/agcounts,
+    dipetkov/actigraph.sleepr,    
     jhuwit/stepcount
 URL: https://github.com/jhuwit/activerse
 BugReports: https://github.com/jhuwit/activerse/issues
