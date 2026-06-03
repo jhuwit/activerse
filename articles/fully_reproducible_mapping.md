@@ -36,7 +36,7 @@ if (has_reticulate) {
   library(reticulate)
   reticulate::py_require("stepcount==3.11.0", python_version = "3.10")
   sc <- reticulate::import("stepcount")
-  sc$stepcount
+  try({sc$stepcount})
   if (requireNamespace("stepcount", quietly = TRUE)) {
     stepcount::stepcount_check()
   }
