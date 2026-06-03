@@ -73,7 +73,7 @@ if (requireNamespace("readxl", quietly = TRUE)) {
 library(activerse)
 #> Attaching activerse packages
 #> - actibase 0.0.1
-#> - actiread 0.0.1
+#> - actiread 0.0.2
 #> - actimetrics 0.0.1
 #> - actisensorlog 0.0.1
 #> - actiwalkability 0.0.1
