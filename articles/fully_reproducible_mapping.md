@@ -77,7 +77,6 @@ library(activerse)
 #> - actimetrics 0.0.1
 #> - actisensorlog 0.0.1
 #> - actiwalkability 0.0.1
-#> - testthat 3.3.2
 #> - actiquantiles 0.0.1
 ```
 
