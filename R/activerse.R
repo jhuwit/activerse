@@ -5,7 +5,6 @@ activerse_packages <- function() {
     "actimetrics",
     "actisensorlog",
     "actiwalkability",
-    "testthat",
     "actiquantiles"
   )
 }
