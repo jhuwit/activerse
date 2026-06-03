@@ -44,8 +44,6 @@ Remotes:
     jhuwit/actisensorlog,
     jhuwit/actiwalkability,
     jhuwit/actiquantiles,
-    bhelsel/agcounts,
-    dipetkov/actigraph.sleepr,    
     jhuwit/stepcount
 URL: https://github.com/jhuwit/activerse, https://jhuwit.github.io/activerse/
 BugReports: https://github.com/jhuwit/activerse/issues
