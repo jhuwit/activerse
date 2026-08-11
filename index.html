@@ -116,6 +116,27 @@
 </table>
 <!-- activerse-packages:end -->
 </div>
+</div>
+<div class="section level1">
+<h1 id="activerse-norms-and-expectations">
+<code>activerse</code> Norms and Expectations<a class="anchor" aria-label="anchor" href="#activerse-norms-and-expectations"></a>
+</h1>
+<p>One of the goals of the <code>activerse</code> is standardization and modularization of code. We aim for some norms and expectation for integration of new packages into the <code>activerse</code> ecosystem. These are not hard rules, but rather guidelines for consistency and maintainability.</p>
+<ol style="list-style-type: decimal">
+<li>When possible, user-exposed (e.g. in <code>exports</code> in NAMESPACE) functions should have the prefix <code>acti_</code>.</li>
+<li>Optional arguments are initialized in the function using <code>NULL</code> and/or use a <code>match.arg</code> case when options are presented.</li>
+<li>Functions should use <code>actibase</code> helpers where they can, especially <code>get_sample_rate</code> and <code>get_dynamic_range</code>. In cases where <code>sample_rate</code> can be passed as well as data, <code>sample_rate</code> will be initialized as <code>NULL</code> or <code>get_sample_rate(data)</code>.</li>
+<li>Python dependencies are in <code>R/zzz.R</code> and wrapped using <code><a href="https://rstudio.github.io/reticulate/reference/py_require.html" class="external-link">reticulate::py_require</a></code> in the <code>.onLoad</code> function. The <code>.onLoad</code> should call an exported <code>py_require_PACKAGE</code> where <code>PACKAGE</code> is usually the package or python module.</li>
+<li>For functions that call python modules, it is encouraged for a <code><a href="https://callr.r-lib.org/reference/r.html" class="external-link">callr::r</a></code> wrapper to be included (this cause a <code>callr</code> dependency, so it can be Suggests. These wrappers should have the prefix <code>py_acti</code>, for example see <code><a href="https://jhuwit.github.io/actimetrics/reference/py_acti_calculate_stepcount.html" class="external-link">actimetrics::py_acti_calculate_stepcount</a></code>, which calls <code><a href="https://jhuwit.github.io/actimetrics/reference/acti_calculate_stepcount.html" class="external-link">actimetrics::acti_calculate_stepcount</a></code>.<br>
+</li>
+<li>Packages have vignettes where possible. They can use files from <code>activerse</code> packages using <code>system.file</code> if they want to use the data.<br>
+</li>
+<li>Individual packages can be depended on with their own system, but functions should be wrapped using the above norms into an <code>activerse</code> package to be “included”.</li>
+</ol>
+</div>
+<div class="section level1">
+<h1 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h1>
 <div class="section level2">
 <h2 id="load-the-packages">Load the packages<a class="anchor" aria-label="anchor" href="#load-the-packages"></a>
 </h2>
@@ -323,6 +344,7 @@
 <p>The script updates <code>DESCRIPTION</code>, <code>R/activerse.R</code>, and both README files in one pass.</p>
 </div>
 </div>
+
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -369,7 +391,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

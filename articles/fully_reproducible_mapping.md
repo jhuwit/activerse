@@ -42,10 +42,6 @@ if (has_reticulate) {
   }
 }
 #> Downloading uv...Done!
-#> Warning in reticulate::py_require("stepcount>=3.11.0", python_version =
-#> "3.10"): After Python has initialized, only `action = 'add'` with new packages
-#> is supported. You tried to add `stepcount>=3.11.0` but requirements contain
-#> `stepcount==3.11.0` already.
 #> [1] TRUE
 
 library(dplyr)
@@ -72,10 +68,10 @@ if (requireNamespace("readxl", quietly = TRUE)) {
 }
 library(activerse)
 #> Attaching activerse packages
-#> - actibase 0.0.1
-#> - actiread 0.0.2
-#> - actimetrics 0.0.1
-#> - actisensorlog 0.0.1
+#> - actibase 0.5.0
+#> - actiread 0.4.0
+#> - actimetrics 0.2.0
+#> - actisensorlog 0.1.0
 #> - actiwalkability 0.0.1
 #> - actiquantiles 0.0.1
 ```
