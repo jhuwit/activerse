@@ -42,6 +42,41 @@ remotes::install_github("jhuwit/activerse")
 
 <!-- activerse-packages:end -->
 
+# `activerse` Norms and Expectations
+
+One of the goals of the `activerse` is standardization and
+modularization of code. We aim for some norms and expectation for
+integration of new packages into the `activerse` ecosystem. These are
+not hard rules, but rather guidelines for consistency and
+maintainability.
+
+1.  When possible, user-exposed (e.g. in `exports` in NAMESPACE)
+    functions should have the prefix `acti_`.
+2.  Optional arguments are initialized in the function using `NULL`
+    and/or use a `match.arg` case when options are presented.
+3.  Functions should use `actibase` helpers where they can, especially
+    `get_sample_rate` and `get_dynamic_range`. In cases where
+    `sample_rate` can be passed as well as data, `sample_rate` will be
+    initialized as `NULL` or `get_sample_rate(data)`.
+4.  Python dependencies are in `R/zzz.R` and wrapped using
+    `reticulate::py_require` in the `.onLoad` function. The `.onLoad`
+    should call an exported `py_require_PACKAGE` where `PACKAGE` is
+    usually the package or python module.
+5.  For functions that call python modules, it is encouraged for a
+    `callr::r` wrapper to be included (this cause a `callr` dependency,
+    so it can be Suggests. These wrappers should have the prefix
+    `py_acti`, for example see
+    `actimetrics::py_acti_calculate_stepcount`, which calls
+    `actimetrics::acti_calculate_stepcount`.  
+6.  Packages have vignettes where possible. They can use files from
+    `activerse` packages using `system.file` if they want to use the
+    data.  
+7.  Individual packages can be depended on with their own system, but
+    functions should be wrapped using the above norms into an
+    `activerse` package to be “included”.
+
+# Usage
+
 ## Load the packages
 
 ``` r
