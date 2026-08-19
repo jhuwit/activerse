@@ -9,9 +9,9 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-6469-1750")
            )
     )
-Description: A lightweight package that attaches actibase, actiread, and
-    actimetrics, actisensorlog, and actiwalkability together, similar to
-    tidyverse.
+Description: A lightweight package that attaches actibase, actiread,
+    actimetrics, actisensorlog, actisleep, and actiwalkability together,
+    similar to tidyverse.
 License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -20,6 +20,7 @@ Suggests:
     actiread,
     actimetrics,
     actisensorlog,
+    actisleep,
     actiwalkability,
     testthat (>= 3.0.0),
     actiquantiles,
@@ -37,11 +38,20 @@ Suggests:
     agcounts (>= 0.6.7),
     reticulate,
     stepcount
+Config/activerse/packages:
+    actibase,
+    actiread,
+    actimetrics,
+    actisensorlog,
+    actisleep,
+    actiwalkability,
+    actiquantiles
 Remotes:
     jhuwit/actibase,
     jhuwit/actiread,
     jhuwit/actimetrics,
     jhuwit/actisensorlog,
+    jhuwit/actisleep,
     jhuwit/actiwalkability,
     jhuwit/actiquantiles,
     jhuwit/stepcount
