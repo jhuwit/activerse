@@ -47,12 +47,12 @@ remotes::install_github("jhuwit/activerse")
 The following packages support the activerse but are not themselves
 activerse packages.
 
-| Package | Repository | Version |
+| Package | Repository | Version / status |
 |----|----|----|
-| `asleep` | [jhuwit/asleep](https://github.com/jhuwit/asleep) | [![CRAN version](https://www.r-pkg.org/badges/version/asleep)](https://cran.r-project.org/package=asleep) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/asleep?label=GitHub)](https://github.com/jhuwit/asleep) |
-| `sleeper` | [jhuwit/sleeper](https://github.com/jhuwit/sleeper) | [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/sleeper?label=GitHub)](https://github.com/jhuwit/sleeper) |
-| `stepcount` | [jhuwit/stepcount](https://github.com/jhuwit/stepcount) | [![CRAN version](https://www.r-pkg.org/badges/version/stepcount)](https://cran.r-project.org/package=stepcount) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/stepcount?label=GitHub)](https://github.com/jhuwit/stepcount) |
-| `walking` | [jhuwit/walking](https://github.com/jhuwit/walking) | [![CRAN version](https://www.r-pkg.org/badges/version/walking)](https://cran.r-project.org/package=walking) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/walking?label=GitHub)](https://github.com/jhuwit/walking) |
+| `asleep` | [jhuwit/asleep](https://github.com/jhuwit/asleep) | [![CRAN version](https://www.r-pkg.org/badges/version/asleep)](https://cran.r-project.org/package=asleep) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/asleep?label=GitHub)](https://github.com/jhuwit/asleep) [![R CMD check](https://github.com/jhuwit/asleep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/asleep/actions/workflows/R-CMD-check.yaml) |
+| `sleeper` | [jhuwit/sleeper](https://github.com/jhuwit/sleeper) | [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/sleeper?label=GitHub)](https://github.com/jhuwit/sleeper) [![R CMD check](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml) |
+| `stepcount` | [jhuwit/stepcount](https://github.com/jhuwit/stepcount) | [![CRAN version](https://www.r-pkg.org/badges/version/stepcount)](https://cran.r-project.org/package=stepcount) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/stepcount?label=GitHub)](https://github.com/jhuwit/stepcount) [![R CMD check](https://github.com/jhuwit/stepcount/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/stepcount/actions/workflows/R-CMD-check.yaml) |
+| `walking` | [jhuwit/walking](https://github.com/jhuwit/walking) | [![CRAN version](https://www.r-pkg.org/badges/version/walking)](https://cran.r-project.org/package=walking) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/walking?label=GitHub)](https://github.com/jhuwit/walking) [![R CMD check](https://github.com/jhuwit/walking/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/walking/actions/workflows/R-CMD-check.yaml) |
 
 <!-- activerse-packages:end -->
 
