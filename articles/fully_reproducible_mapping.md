@@ -70,11 +70,11 @@ library(activerse)
 #> Attaching activerse packages
 #> - actibase 0.5.0
 #> - actiread 0.5.0
-#> - actimetrics 0.3.0
-#> - actisensorlog 0.1.0
+#> - actimetrics 0.4.0
+#> - actisensorlog 0.2.0
 #> - actisleep 0.1.0
 #> - actiwalkability 0.0.1
-#> - actiquantiles 0.0.1
+#> - actiquantiles 0.1.0
 ```
 
 The report keeps downloaded files in a small directory structure so that

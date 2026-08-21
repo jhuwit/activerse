@@ -39,6 +39,7 @@ activerse packages.
 
 | Package | Repository | Version / status |
 |----|----|----|
+| `actinet` | [jhuwit/actinet](https://github.com/jhuwit/actinet) | [![CRAN version](https://www.r-pkg.org/badges/version/actinet)](https://cran.r-project.org/package=actinet) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actinet?label=GitHub)](https://github.com/jhuwit/actinet) [![R CMD check](https://github.com/jhuwit/actinet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actinet/actions/workflows/R-CMD-check.yaml) |
 | `asleep` | [jhuwit/asleep](https://github.com/jhuwit/asleep) | [![CRAN version](https://www.r-pkg.org/badges/version/asleep)](https://cran.r-project.org/package=asleep) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/asleep?label=GitHub)](https://github.com/jhuwit/asleep) [![R CMD check](https://github.com/jhuwit/asleep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/asleep/actions/workflows/R-CMD-check.yaml) |
 | `mapnhanespa` | [jhuwit/mapnhanespa](https://github.com/jhuwit/mapnhanespa) | [![CRAN version](https://www.r-pkg.org/badges/version/mapnhanespa)](https://cran.r-project.org/package=mapnhanespa) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/mapnhanespa?label=GitHub)](https://github.com/jhuwit/mapnhanespa) [![R CMD check](https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml) |
 | `sleeper` | [jhuwit/sleeper](https://github.com/jhuwit/sleeper) | [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/sleeper?label=GitHub)](https://github.com/jhuwit/sleeper) [![R CMD check](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml) |
@@ -91,9 +92,8 @@ library(activerse)
 # activerse-load:start
 search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog|actisleep|actiwalkability|actiquantiles)$", search())]
 #> [1] "package:actiquantiles"   "package:actiwalkability"
-#> [3] "package:actisleep"       "package:actisensorlog"  
-#> [5] "package:actimetrics"     "package:actiread"       
-#> [7] "package:actibase"
+#> [3] "package:actisensorlog"   "package:actimetrics"    
+#> [5] "package:actiread"        "package:actibase"
 # activerse-load:end
 ```
 
