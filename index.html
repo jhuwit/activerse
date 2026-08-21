@@ -158,6 +158,13 @@
 </td>
 </tr>
 <tr>
+<td><code>mapnhanespa</code></td>
+<td><a href="https://github.com/jhuwit/mapnhanespa" class="external-link">jhuwit/mapnhanespa</a></td>
+<td>
+<a href="https://github.com/jhuwit/mapnhanespa" class="external-link"><img src="https://img.shields.io/github/r-package/v/jhuwit/mapnhanespa?label=GitHub" alt="GitHub version"></a> <a href="https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R CMD check"></a>
+</td>
+</tr>
+<tr>
 <td><code>sleeper</code></td>
 <td><a href="https://github.com/jhuwit/sleeper" class="external-link">jhuwit/sleeper</a></td>
 <td>
@@ -225,15 +232,19 @@
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">acti_count_data</span>, package <span class="op">=</span> <span class="st">"actimetrics"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">acti_raw_data</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                  time     X      Y     Z</span></span>
-<span><span class="co">#&gt; 1 2019-09-17 18:40:00 0.000  0.008 0.996</span></span>
-<span><span class="co">#&gt; 2 2019-09-17 18:40:00 0.016  0.000 1.008</span></span>
-<span><span class="co">#&gt; 3 2019-09-17 18:40:00 0.020 -0.008 1.004</span></span>
-<span><span class="co">#&gt; 4 2019-09-17 18:40:00 0.016 -0.012 1.012</span></span>
-<span><span class="co">#&gt; 5 2019-09-17 18:40:00 0.016 -0.008 1.008</span></span>
-<span><span class="co">#&gt; 6 2019-09-17 18:40:00 0.008 -0.008 1.008</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
+<span><span class="co">#&gt;   time                    X      Y     Z</span></span>
+<span><span class="co">#&gt;   &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2019-09-17 18:40:00 0      0.008 0.996</span></span>
+<span><span class="co">#&gt; 2 2019-09-17 18:40:00 0.016  0     1.01</span></span>
+<span><span class="co">#&gt; 3 2019-09-17 18:40:00 0.02  -0.008 1.00</span></span>
+<span><span class="co">#&gt; 4 2019-09-17 18:40:00 0.016 -0.012 1.01</span></span>
+<span><span class="co">#&gt; 5 2019-09-17 18:40:00 0.016 -0.008 1.01</span></span>
+<span><span class="co">#&gt; 6 2019-09-17 18:40:00 0.008 -0.008 1.01</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">acti_count_data</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                  time axis1 axis2 axis3 counts</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;   time                axis1 axis2 axis3 counts</span></span>
+<span><span class="co">#&gt;   &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;</span></span>
 <span><span class="co">#&gt; 1 2019-09-17 18:40:00  5435  9659  8253  13818</span></span>
 <span><span class="co">#&gt; 2 2019-09-17 18:41:00  9125  9197  4131  13598</span></span>
 <span><span class="co">#&gt; 3 2019-09-17 18:42:00  4404  4367  3494   7119</span></span>

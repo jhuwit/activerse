@@ -40,6 +40,7 @@ activerse packages.
 | Package | Repository | Version / status |
 |----|----|----|
 | `asleep` | [jhuwit/asleep](https://github.com/jhuwit/asleep) | [![CRAN version](https://www.r-pkg.org/badges/version/asleep)](https://cran.r-project.org/package=asleep) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/asleep?label=GitHub)](https://github.com/jhuwit/asleep) [![R CMD check](https://github.com/jhuwit/asleep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/asleep/actions/workflows/R-CMD-check.yaml) |
+| `mapnhanespa` | [jhuwit/mapnhanespa](https://github.com/jhuwit/mapnhanespa) | [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/mapnhanespa?label=GitHub)](https://github.com/jhuwit/mapnhanespa) [![R CMD check](https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml) |
 | `sleeper` | [jhuwit/sleeper](https://github.com/jhuwit/sleeper) | [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/sleeper?label=GitHub)](https://github.com/jhuwit/sleeper) [![R CMD check](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml) |
 | `stepcount` | [jhuwit/stepcount](https://github.com/jhuwit/stepcount) | [![CRAN version](https://www.r-pkg.org/badges/version/stepcount)](https://cran.r-project.org/package=stepcount) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/stepcount?label=GitHub)](https://github.com/jhuwit/stepcount) [![R CMD check](https://github.com/jhuwit/stepcount/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/stepcount/actions/workflows/R-CMD-check.yaml) |
 | `walking` | [jhuwit/walking](https://github.com/jhuwit/walking) | [![CRAN version](https://www.r-pkg.org/badges/version/walking)](https://cran.r-project.org/package=walking) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/walking?label=GitHub)](https://github.com/jhuwit/walking) [![R CMD check](https://github.com/jhuwit/walking/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/walking/actions/workflows/R-CMD-check.yaml) |
@@ -106,15 +107,19 @@ data(acti_raw_data, package = "actibase")
 data(acti_count_data, package = "actimetrics")
 
 head(acti_raw_data)
-#>                  time     X      Y     Z
-#> 1 2019-09-17 18:40:00 0.000  0.008 0.996
-#> 2 2019-09-17 18:40:00 0.016  0.000 1.008
-#> 3 2019-09-17 18:40:00 0.020 -0.008 1.004
-#> 4 2019-09-17 18:40:00 0.016 -0.012 1.012
-#> 5 2019-09-17 18:40:00 0.016 -0.008 1.008
-#> 6 2019-09-17 18:40:00 0.008 -0.008 1.008
+#> # A tibble: 6 × 4
+#>   time                    X      Y     Z
+#>   <dttm>              <dbl>  <dbl> <dbl>
+#> 1 2019-09-17 18:40:00 0      0.008 0.996
+#> 2 2019-09-17 18:40:00 0.016  0     1.01
+#> 3 2019-09-17 18:40:00 0.02  -0.008 1.00
+#> 4 2019-09-17 18:40:00 0.016 -0.012 1.01
+#> 5 2019-09-17 18:40:00 0.016 -0.008 1.01
+#> 6 2019-09-17 18:40:00 0.008 -0.008 1.01
 head(acti_count_data)
-#>                  time axis1 axis2 axis3 counts
+#> # A tibble: 6 × 5
+#>   time                axis1 axis2 axis3 counts
+#>   <dttm>              <dbl> <dbl> <dbl>  <dbl>
 #> 1 2019-09-17 18:40:00  5435  9659  8253  13818
 #> 2 2019-09-17 18:41:00  9125  9197  4131  13598
 #> 3 2019-09-17 18:42:00  4404  4367  3494   7119
