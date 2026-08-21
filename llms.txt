@@ -40,7 +40,7 @@ activerse packages.
 | Package | Repository | Version / status |
 |----|----|----|
 | `asleep` | [jhuwit/asleep](https://github.com/jhuwit/asleep) | [![CRAN version](https://www.r-pkg.org/badges/version/asleep)](https://cran.r-project.org/package=asleep) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/asleep?label=GitHub)](https://github.com/jhuwit/asleep) [![R CMD check](https://github.com/jhuwit/asleep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/asleep/actions/workflows/R-CMD-check.yaml) |
-| `mapnhanespa` | [jhuwit/mapnhanespa](https://github.com/jhuwit/mapnhanespa) | [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/mapnhanespa?label=GitHub)](https://github.com/jhuwit/mapnhanespa) [![R CMD check](https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml) |
+| `mapnhanespa` | [jhuwit/mapnhanespa](https://github.com/jhuwit/mapnhanespa) | [![CRAN version](https://www.r-pkg.org/badges/version/mapnhanespa)](https://cran.r-project.org/package=mapnhanespa) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/mapnhanespa?label=GitHub)](https://github.com/jhuwit/mapnhanespa) [![R CMD check](https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/mapnhanespa/actions/workflows/R-CMD-check.yaml) |
 | `sleeper` | [jhuwit/sleeper](https://github.com/jhuwit/sleeper) | [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/sleeper?label=GitHub)](https://github.com/jhuwit/sleeper) [![R CMD check](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml) |
 | `stepcount` | [jhuwit/stepcount](https://github.com/jhuwit/stepcount) | [![CRAN version](https://www.r-pkg.org/badges/version/stepcount)](https://cran.r-project.org/package=stepcount) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/stepcount?label=GitHub)](https://github.com/jhuwit/stepcount) [![R CMD check](https://github.com/jhuwit/stepcount/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/stepcount/actions/workflows/R-CMD-check.yaml) |
 | `walking` | [jhuwit/walking](https://github.com/jhuwit/walking) | [![CRAN version](https://www.r-pkg.org/badges/version/walking)](https://cran.r-project.org/package=walking) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/walking?label=GitHub)](https://github.com/jhuwit/walking) [![R CMD check](https://github.com/jhuwit/walking/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/walking/actions/workflows/R-CMD-check.yaml) |
@@ -91,8 +91,9 @@ library(activerse)
 # activerse-load:start
 search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog|actisleep|actiwalkability|actiquantiles)$", search())]
 #> [1] "package:actiquantiles"   "package:actiwalkability"
-#> [3] "package:actisensorlog"   "package:actimetrics"    
-#> [5] "package:actiread"        "package:actibase"
+#> [3] "package:actisleep"       "package:actisensorlog"  
+#> [5] "package:actimetrics"     "package:actiread"       
+#> [7] "package:actibase"
 # activerse-load:end
 ```
 
@@ -111,10 +112,10 @@ head(acti_raw_data)
 #>   time                    X      Y     Z
 #>   <dttm>              <dbl>  <dbl> <dbl>
 #> 1 2019-09-17 18:40:00 0      0.008 0.996
-#> 2 2019-09-17 18:40:00 0.016  0     1.01
-#> 3 2019-09-17 18:40:00 0.02  -0.008 1.00
-#> 4 2019-09-17 18:40:00 0.016 -0.012 1.01
-#> 5 2019-09-17 18:40:00 0.016 -0.008 1.01
+#> 2 2019-09-17 18:40:00 0.016  0     1.01 
+#> 3 2019-09-17 18:40:00 0.02  -0.008 1.00 
+#> 4 2019-09-17 18:40:00 0.016 -0.012 1.01 
+#> 5 2019-09-17 18:40:00 0.016 -0.008 1.01 
 #> 6 2019-09-17 18:40:00 0.008 -0.008 1.01
 head(acti_count_data)
 #> # A tibble: 6 × 5
