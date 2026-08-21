@@ -36,6 +36,7 @@ Suggests:
     cli,
     actigraph.sleepr,
     agcounts (>= 0.6.7),
+    mapnhanespa,
     reticulate,
     stepcount
 Config/activerse/packages:
@@ -54,6 +55,7 @@ Remotes:
     jhuwit/actisleep,
     jhuwit/actiwalkability,
     jhuwit/actiquantiles,
+    jhuwit/mapnhanespa,
     jhuwit/stepcount
 URL: https://github.com/jhuwit/activerse, https://jhuwit.github.io/activerse/
 BugReports: https://github.com/jhuwit/activerse/issues
