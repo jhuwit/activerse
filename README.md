@@ -90,6 +90,9 @@ maintainability.
 7.  Individual packages can be depended on with their own system, but
     functions should be wrapped using the above norms into an
     `activerse` package to be “included”.
+8.  Use `Roxygen: list(markdown = TRUE)` in `DESCRIPTION`, use the
+    `usethis` package to write your package and `devtools::release()` to
+    submit to CRAN.
 
 # Usage
 

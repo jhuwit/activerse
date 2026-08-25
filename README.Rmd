@@ -74,6 +74,7 @@ One of the goals of the `activerse` is standardization and modularization of cod
 5. For functions that call python modules, it is encouraged for a `callr::r` wrapper to be included (this cause a `callr` dependency, so it can be Suggests.  These wrappers should have the prefix `py_acti`, for example see `actimetrics::py_acti_calculate_stepcount`, which calls `actimetrics::acti_calculate_stepcount`.  
 6. Packages have vignettes where possible.  They can use files from `activerse` packages using `system.file` if they want to use the data.  
 7. Individual packages can be depended on with their own system, but functions should be wrapped using the above norms into an `activerse` package to be "included".
+8. Use `Roxygen: list(markdown = TRUE)` in `DESCRIPTION`, use the `usethis` package to write your package and `devtools::release()` to submit to CRAN.
 
 
 
