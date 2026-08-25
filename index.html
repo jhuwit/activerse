@@ -212,6 +212,7 @@
 <li>Packages have vignettes where possible. They can use files from <code>activerse</code> packages using <code>system.file</code> if they want to use the data.<br>
 </li>
 <li>Individual packages can be depended on with their own system, but functions should be wrapped using the above norms into an <code>activerse</code> package to be “included”.</li>
+<li>Use <code>Roxygen: list(markdown = TRUE)</code> in <code>DESCRIPTION</code>, use the <code>usethis</code> package to write your package and <code>devtools::release()</code> to submit to CRAN.</li>
 </ol>
 </div>
 <div class="section level1">

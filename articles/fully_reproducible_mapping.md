@@ -73,7 +73,7 @@ library(activerse)
 #> - actimetrics 0.4.0
 #> - actisensorlog 0.2.0
 #> - actisleep 0.1.0
-#> - actiwalkability 0.0.1
+#> - actiwalkability 0.1.0
 #> - actiquantiles 0.1.0
 ```
 
