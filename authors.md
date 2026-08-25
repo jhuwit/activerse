@@ -11,12 +11,12 @@ Source:
 [`DESCRIPTION`](https://github.com/jhuwit/activerse/blob/main/DESCRIPTION)
 
 Muschelli J (2026). *activerse: Attach Activerse Packages*. R package
-version 0.0.1, <https://github.com/jhuwit/activerse>.
+version 0.1.0, <https://github.com/jhuwit/activerse>.
 
     @Manual{,
       title = {activerse: Attach Activerse Packages},
       author = {John Muschelli},
       year = {2026},
-      note = {R package version 0.0.1},
+      note = {R package version 0.1.0},
       url = {https://github.com/jhuwit/activerse},
     }
