@@ -9,7 +9,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-6469-1750")
            )
     )
-Description: A lightweight package that attaches actibase, actiread,
+Description: A lightweight package that attaches actibase, actiplot, actiread,
     actimetrics, actisensorlog, actisleep, and actiwalkability together,
     similar to tidyverse.
 License: GPL-3
@@ -17,6 +17,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Suggests:
     actibase,
+    actiplot,
     actiread,
     actimetrics,
     actisensorlog,
@@ -36,27 +37,28 @@ Suggests:
     cli,
     actigraph.sleepr,
     agcounts (>= 0.6.7),
-    mapnhanespa,
     reticulate,
     stepcount
 Config/activerse/packages:
     actibase,
+    actiplot,
     actiread,
     actimetrics,
     actisensorlog,
     actisleep,
     actiwalkability,
     actiquantiles
+Config/activerse/related-packages:
+    actinet,
+    asleep,
+    mapnhanespa,
+    sleeper,
+    stepcount,
+    walking
 Remotes:
-    jhuwit/actibase,
-    jhuwit/actiread,
+    jhuwit/actiplot,
     jhuwit/actimetrics,
-    jhuwit/actisensorlog,
-    jhuwit/actisleep,
-    jhuwit/actiwalkability,
-    jhuwit/actiquantiles,
-    jhuwit/mapnhanespa,
-    jhuwit/stepcount
+    jhuwit/actisleep
 URL: https://github.com/jhuwit/activerse, https://jhuwit.github.io/activerse/
 BugReports: https://github.com/jhuwit/activerse/issues
 Config/roxygen2/version: 8.0.0

@@ -21,6 +21,7 @@ readme_md_path <- file.path(root_dir, "README.md")
 args <- commandArgs(trailingOnly = TRUE)
 owner <- "jhuwit"
 new_packages <- character()
+package_type <- "core"
 
 for (arg in args) {
   if (startsWith(arg, "--owner=")) {
@@ -29,6 +30,11 @@ for (arg in args) {
   }
 
   if (arg == "--dry-run") {
+    next
+  }
+
+  if (arg == "--related") {
+    package_type <- "related"
     next
   }
 
@@ -128,27 +134,31 @@ build_intro_block <- function(packages, remotes) {
   )
 }
 
-build_table_block <- function(packages, remotes) {
+build_table_block <- function(packages, remotes, owner, start_marker, end_marker) {
   remote_by_package <- setNames(remotes, sub("^.*/", "", remotes))
   repos <- unname(remote_by_package[packages])
-  repos[is.na(repos) | !nzchar(repos)] <- packages[is.na(repos) | !nzchar(repos)]
+  repos[is.na(repos) | !nzchar(repos)] <- paste0(owner, "/", packages[is.na(repos) | !nzchar(repos)])
 
   rows <- vapply(seq_along(packages), function(i) {
     repo <- repos[[i]]
     pkg <- packages[[i]]
     paste0(
       "| `", pkg, "` | [", repo, "](https://github.com/", repo, ") | ",
+      "[![CRAN version](https://www.r-pkg.org/badges/version/", pkg,
+      ")](https://cran.r-project.org/package=", pkg, ") ",
+      "[![GitHub version](https://img.shields.io/github/r-package/v/", repo,
+      "?label=GitHub)](https://github.com/", repo, ") ",
       "[![R CMD check](https://github.com/", repo, "/actions/workflows/R-CMD-check.yaml/badge.svg)](",
       "https://github.com/", repo, "/actions/workflows/R-CMD-check.yaml) |"
     )
   }, character(1))
 
   c(
-    "<!-- activerse-packages:start -->",
-    "| Package | Repository | R CMD check |",
+    start_marker,
+    "| Package | Repository | Version / status |",
     "| --- | --- | --- |",
     rows,
-    "<!-- activerse-packages:end -->"
+    end_marker
   )
 }
 
@@ -174,28 +184,44 @@ replace_block <- function(lines, start_marker, end_marker, replacement) {
 }
 
 description <- read.dcf(desc_path, all = TRUE)[1, ]
-imports <- parse_dcf_packages(description[["Suggests"]])
+suggests <- parse_dcf_packages(description[["Suggests"]])
+core_packages <- parse_dcf_packages(description[["Config/activerse/packages"]])
+related_packages <- parse_dcf_packages(description[["Config/activerse/related-packages"]])
 remotes <- parse_dcf_remotes(description[["Remotes"]])
+
+if (!length(core_packages)) {
+  stop("No core activerse packages found in Config/activerse/packages.", call. = FALSE)
+}
 
 if (length(new_packages)) {
   new_packages <- unique(new_packages)
-  missing <- setdiff(new_packages, imports)
-  if (length(missing)) {
-    imports <- unique(c(imports, missing))
+  target_packages <- if (package_type == "core") core_packages else related_packages
+  missing <- setdiff(new_packages, target_packages)
+  if (length(missing) && package_type == "core") {
+    core_packages <- unique(c(core_packages, missing))
+    suggests <- unique(c(suggests, missing))
     remotes <- unique(c(remotes, paste0(owner, "/", missing)))
 
     desc_lines <- readLines(desc_path, warn = FALSE)
-    desc_lines <- replace_dcf_field(desc_lines, "Suggests", imports)
+    desc_lines <- replace_dcf_field(desc_lines, "Suggests", suggests)
+    desc_lines <- replace_dcf_field(desc_lines, "Config/activerse/packages", core_packages)
     desc_lines <- replace_dcf_field(desc_lines, "Remotes", remotes)
     writeLines(desc_lines, desc_path, sep = "\n")
-    message("Updated DESCRIPTION with: ", paste(missing, collapse = ", "))
-  } else {
-    message("No new packages to add to DESCRIPTION.")
-  }
-}
+    message("Added core activerse package(s): ", paste(missing, collapse = ", "))
+  } else if (length(missing)) {
+    related_packages <- unique(c(related_packages, missing))
 
-if (!length(imports)) {
-  stop("No imported activerse packages found in DESCRIPTION.", call. = FALSE)
+    desc_lines <- readLines(desc_path, warn = FALSE)
+    desc_lines <- replace_dcf_field(
+      desc_lines,
+      "Config/activerse/related-packages",
+      related_packages
+    )
+    writeLines(desc_lines, desc_path, sep = "\n")
+    message("Added README-only related package(s): ", paste(missing, collapse = ", "))
+  } else {
+    message("No new ", package_type, " packages to add.")
+  }
 }
 
 r_lines <- readLines(r_path, warn = FALSE)
@@ -212,10 +238,10 @@ end <- start + end_rel
 pkg_block <- c(
   "activerse_packages <- function() {",
   "  c(",
-  if (length(imports) == 1) {
-    paste0('    "', imports, '"')
+  if (length(core_packages) == 1) {
+    paste0('    "', core_packages, '"')
   } else {
-    paste0('    "', imports, '"', c(rep(",", length(imports) - 1), ""))
+    paste0('    "', core_packages, '"', c(rep(",", length(core_packages) - 1), ""))
   },
   "  )",
   "}"
@@ -230,19 +256,31 @@ readme_rmd_lines <- replace_block(
   readme_rmd_lines,
   "<!-- activerse-intro:start -->",
   "<!-- activerse-intro:end -->",
-  build_intro_block(imports, remotes)
+  build_intro_block(core_packages, remotes)
 )
 readme_rmd_lines <- replace_block(
   readme_rmd_lines,
   "<!-- activerse-packages:start -->",
   "<!-- activerse-packages:end -->",
-  build_table_block(imports, remotes)
+  build_table_block(
+    core_packages, remotes, owner,
+    "<!-- activerse-packages:start -->", "<!-- activerse-packages:end -->"
+  )
+)
+readme_rmd_lines <- replace_block(
+  readme_rmd_lines,
+  "<!-- activerse-related-packages:start -->",
+  "<!-- activerse-related-packages:end -->",
+  build_table_block(
+    related_packages, remotes, owner,
+    "<!-- activerse-related-packages:start -->", "<!-- activerse-related-packages:end -->"
+  )
 )
 readme_rmd_lines <- replace_block(
   readme_rmd_lines,
   "# activerse-load:start",
   "# activerse-load:end",
-  build_load_block(imports)
+  build_load_block(core_packages)
 )
 writeLines(readme_rmd_lines, readme_rmd_path, sep = "\n")
 message("Updated README.Rmd")

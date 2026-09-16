@@ -1,6 +1,7 @@
 activerse_packages <- function() {
   c(
     "actibase",
+    "actiplot",
     "actiread",
     "actimetrics",
     "actisensorlog",
