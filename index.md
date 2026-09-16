@@ -2,6 +2,7 @@
 
 `activerse` is a lightweight helper package that attaches
 [`actibase`](https://github.com/jhuwit/actibase),
+[`actiplot`](https://github.com/jhuwit/actiplot),
 [`actiread`](https://github.com/jhuwit/actiread),
 [`actimetrics`](https://github.com/jhuwit/actimetrics),
 [`actisensorlog`](https://github.com/jhuwit/actisensorlog),
@@ -25,17 +26,18 @@ remotes::install_github("jhuwit/activerse")
 | Package | Repository | Version / status |
 |----|----|----|
 | `actibase` | [jhuwit/actibase](https://github.com/jhuwit/actibase) | [![CRAN version](https://www.r-pkg.org/badges/version/actibase)](https://cran.r-project.org/package=actibase) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actibase?label=GitHub)](https://github.com/jhuwit/actibase) [![R CMD check](https://github.com/jhuwit/actibase/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actibase/actions/workflows/R-CMD-check.yaml) |
+| `actiplot` | [jhuwit/actiplot](https://github.com/jhuwit/actiplot) | [![CRAN version](https://www.r-pkg.org/badges/version/actiplot)](https://cran.r-project.org/package=actiplot) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actiplot?label=GitHub)](https://github.com/jhuwit/actiplot) [![R CMD check](https://github.com/jhuwit/actiplot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiplot/actions/workflows/R-CMD-check.yaml) |
 | `actiread` | [jhuwit/actiread](https://github.com/jhuwit/actiread) | [![CRAN version](https://www.r-pkg.org/badges/version/actiread)](https://cran.r-project.org/package=actiread) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actiread?label=GitHub)](https://github.com/jhuwit/actiread) [![R CMD check](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml) |
 | `actimetrics` | [jhuwit/actimetrics](https://github.com/jhuwit/actimetrics) | [![CRAN version](https://www.r-pkg.org/badges/version/actimetrics)](https://cran.r-project.org/package=actimetrics) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actimetrics?label=GitHub)](https://github.com/jhuwit/actimetrics) [![R CMD check](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml) |
 | `actisensorlog` | [jhuwit/actisensorlog](https://github.com/jhuwit/actisensorlog) | [![CRAN version](https://www.r-pkg.org/badges/version/actisensorlog)](https://cran.r-project.org/package=actisensorlog) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actisensorlog?label=GitHub)](https://github.com/jhuwit/actisensorlog) [![R CMD check](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml) |
+| `actisleep` | [jhuwit/actisleep](https://github.com/jhuwit/actisleep) | [![CRAN version](https://www.r-pkg.org/badges/version/actisleep)](https://cran.r-project.org/package=actisleep) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actisleep?label=GitHub)](https://github.com/jhuwit/actisleep) [![R CMD check](https://github.com/jhuwit/actisleep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisleep/actions/workflows/R-CMD-check.yaml) |
 | `actiwalkability` | [jhuwit/actiwalkability](https://github.com/jhuwit/actiwalkability) | [![CRAN version](https://www.r-pkg.org/badges/version/actiwalkability)](https://cran.r-project.org/package=actiwalkability) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actiwalkability?label=GitHub)](https://github.com/jhuwit/actiwalkability) [![R CMD check](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml) |
 | `actiquantiles` | [jhuwit/actiquantiles](https://github.com/jhuwit/actiquantiles) | [![CRAN version](https://www.r-pkg.org/badges/version/actiquantiles)](https://cran.r-project.org/package=actiquantiles) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actiquantiles?label=GitHub)](https://github.com/jhuwit/actiquantiles) [![R CMD check](https://github.com/jhuwit/actiquantiles/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiquantiles/actions/workflows/R-CMD-check.yaml) |
-| `actisleep` | [jhuwit/actisleep](https://github.com/jhuwit/actisleep) | [![CRAN version](https://www.r-pkg.org/badges/version/actisleep)](https://cran.r-project.org/package=actisleep) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actisleep?label=GitHub)](https://github.com/jhuwit/actisleep) [![R CMD check](https://github.com/jhuwit/actisleep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisleep/actions/workflows/R-CMD-check.yaml) |
 
-## Dependencies
+## Related packages
 
-The following packages support the activerse but are not themselves
-activerse packages.
+The following packages are part of the activerse ecosystem but are not
+attached by `activerse`.
 
 | Package | Repository | Version / status |
 |----|----|----|
@@ -93,10 +95,11 @@ maintainability.
 library(activerse)
 
 # activerse-load:start
-search()[grepl("^package:(actibase|actiread|actimetrics|actisensorlog|actisleep|actiwalkability|actiquantiles)$", search())]
+search()[grepl("^package:(actibase|actiplot|actiread|actimetrics|actisensorlog|actisleep|actiwalkability|actiquantiles)$", search())]
 #> [1] "package:actiquantiles"   "package:actiwalkability"
-#> [3] "package:actisensorlog"   "package:actimetrics"    
-#> [5] "package:actiread"        "package:actibase"
+#> [3] "package:actisleep"       "package:actisensorlog"  
+#> [5] "package:actimetrics"     "package:actiread"       
+#> [7] "package:actibase"
 # activerse-load:end
 ```
 
@@ -312,7 +315,7 @@ When a new package is added to `activerse`, update the package list, the
 README, and the attach helper by running:
 
 ``` r
-./scripts/update-activerse.R actisensorlog
+./scripts/update-activerse.R actiplot
 ```
 
 If the new package lives under a different GitHub owner, pass
@@ -324,3 +327,10 @@ If the new package lives under a different GitHub owner, pass
 
 The script updates `DESCRIPTION`, `R/activerse.R`, and both README files
 in one pass.
+
+To list an ecosystem package in the README without making it an
+`activerse` dependency or attaching it, use `--related`:
+
+``` r
+./scripts/update-activerse.R --related mapnhanespa
+```
