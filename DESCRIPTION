@@ -10,7 +10,7 @@ Authors@R: c(
            )
     )
 Description: A lightweight package that attaches actibase, actiplot, actiread,
-    actimetrics, actisensorlog, actisleep, and actiwalkability together,
+    actimetrics, actisensorlog, actisomni, and actiwalkability together,
     similar to tidyverse.
 License: GPL-3
 Encoding: UTF-8
@@ -21,7 +21,7 @@ Suggests:
     actiread,
     actimetrics,
     actisensorlog,
-    actisleep,
+    actisomni,
     actiwalkability,
     testthat (>= 3.0.0),
     actiquantiles,
@@ -45,7 +45,7 @@ Config/activerse/packages:
     actiread,
     actimetrics,
     actisensorlog,
-    actisleep,
+    actisomni,
     actiwalkability,
     actiquantiles
 Config/activerse/related-packages:
@@ -57,8 +57,7 @@ Config/activerse/related-packages:
     walking
 Remotes:
     jhuwit/actiplot,
-    jhuwit/actimetrics,
-    jhuwit/actisleep
+    jhuwit/actisomni
 URL: https://github.com/jhuwit/activerse, https://jhuwit.github.io/activerse/
 BugReports: https://github.com/jhuwit/activerse/issues
 Config/roxygen2/version: 8.0.0
