@@ -6,7 +6,7 @@
 [`actiread`](https://github.com/jhuwit/actiread),
 [`actimetrics`](https://github.com/jhuwit/actimetrics),
 [`actisensorlog`](https://github.com/jhuwit/actisensorlog),
-[`actisleep`](https://github.com/jhuwit/actisleep),
+[`actisomni`](https://github.com/jhuwit/actisomni),
 [`actiwalkability`](https://github.com/jhuwit/actiwalkability), and
 [`actiquantiles`](https://github.com/jhuwit/actiquantiles) together.
 
@@ -30,7 +30,7 @@ remotes::install_github("jhuwit/activerse")
 | `actiread` | [jhuwit/actiread](https://github.com/jhuwit/actiread) | [![CRAN version](https://www.r-pkg.org/badges/version/actiread)](https://cran.r-project.org/package=actiread) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actiread?label=GitHub)](https://github.com/jhuwit/actiread) [![R CMD check](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiread/actions/workflows/R-CMD-check.yaml) |
 | `actimetrics` | [jhuwit/actimetrics](https://github.com/jhuwit/actimetrics) | [![CRAN version](https://www.r-pkg.org/badges/version/actimetrics)](https://cran.r-project.org/package=actimetrics) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actimetrics?label=GitHub)](https://github.com/jhuwit/actimetrics) [![R CMD check](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actimetrics/actions/workflows/R-CMD-check.yaml) |
 | `actisensorlog` | [jhuwit/actisensorlog](https://github.com/jhuwit/actisensorlog) | [![CRAN version](https://www.r-pkg.org/badges/version/actisensorlog)](https://cran.r-project.org/package=actisensorlog) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actisensorlog?label=GitHub)](https://github.com/jhuwit/actisensorlog) [![R CMD check](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisensorlog/actions/workflows/R-CMD-check.yaml) |
-| `actisleep` | [jhuwit/actisleep](https://github.com/jhuwit/actisleep) | [![CRAN version](https://www.r-pkg.org/badges/version/actisleep)](https://cran.r-project.org/package=actisleep) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actisleep?label=GitHub)](https://github.com/jhuwit/actisleep) [![R CMD check](https://github.com/jhuwit/actisleep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisleep/actions/workflows/R-CMD-check.yaml) |
+| `actisomni` | [jhuwit/actisomni](https://github.com/jhuwit/actisomni) | [![CRAN version](https://www.r-pkg.org/badges/version/actisomni)](https://cran.r-project.org/package=actisomni) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actisomni?label=GitHub)](https://github.com/jhuwit/actisomni) [![R CMD check](https://github.com/jhuwit/actisomni/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actisomni/actions/workflows/R-CMD-check.yaml) |
 | `actiwalkability` | [jhuwit/actiwalkability](https://github.com/jhuwit/actiwalkability) | [![CRAN version](https://www.r-pkg.org/badges/version/actiwalkability)](https://cran.r-project.org/package=actiwalkability) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actiwalkability?label=GitHub)](https://github.com/jhuwit/actiwalkability) [![R CMD check](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiwalkability/actions/workflows/R-CMD-check.yaml) |
 | `actiquantiles` | [jhuwit/actiquantiles](https://github.com/jhuwit/actiquantiles) | [![CRAN version](https://www.r-pkg.org/badges/version/actiquantiles)](https://cran.r-project.org/package=actiquantiles) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/actiquantiles?label=GitHub)](https://github.com/jhuwit/actiquantiles) [![R CMD check](https://github.com/jhuwit/actiquantiles/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/actiquantiles/actions/workflows/R-CMD-check.yaml) |
 
@@ -95,9 +95,9 @@ maintainability.
 library(activerse)
 
 # activerse-load:start
-search()[grepl("^package:(actibase|actiplot|actiread|actimetrics|actisensorlog|actisleep|actiwalkability|actiquantiles)$", search())]
+search()[grepl("^package:(actibase|actiplot|actiread|actimetrics|actisensorlog|actisomni|actiwalkability|actiquantiles)$", search())]
 #> [1] "package:actiquantiles"   "package:actiwalkability"
-#> [3] "package:actisleep"       "package:actisensorlog"  
+#> [3] "package:actisomni"        "package:actisensorlog"
 #> [5] "package:actimetrics"     "package:actiread"       
 #> [7] "package:actibase"
 # activerse-load:end
