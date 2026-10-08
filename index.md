@@ -334,3 +334,8 @@ To list an ecosystem package in the README without making it an
 ``` r
 ./scripts/update-activerse.R --related mapnhanespa
 ```
+
+## Funding acknowledgement
+
+This work was supported by NIH P30AG021334 and the Johns Hopkins Older
+Americans Independence Center (OAIC) Pepper Center grant.
