@@ -9,14 +9,14 @@ activerse
 <!-- activerse-intro:start -->
 
 `activerse` is a lightweight helper package that attaches
-[`actibase`](https://github.com/jhuwit/actibase),
+[`actibase`](https://github.com/actibase),
 [`actiplot`](https://github.com/jhuwit/actiplot),
-[`actiread`](https://github.com/jhuwit/actiread),
-[`actimetrics`](https://github.com/jhuwit/actimetrics),
-[`actisensorlog`](https://github.com/jhuwit/actisensorlog),
+[`actiread`](https://github.com/actiread),
+[`actimetrics`](https://github.com/actimetrics),
+[`actisensorlog`](https://github.com/actisensorlog),
 [`actisomni`](https://github.com/jhuwit/actisomni),
-[`actiwalkability`](https://github.com/jhuwit/actiwalkability), and
-[`actiquantiles`](https://github.com/jhuwit/actiquantiles) together.
+[`actiwalkability`](https://github.com/actiwalkability), and
+[`actiquantiles`](https://github.com/actiquantiles) together.
 <!-- activerse-intro:end -->
 
 It is designed to behave a bit like `tidyverse`: load one package, then
@@ -89,10 +89,10 @@ maintainability.
     so it can be Suggests. These wrappers should have the prefix
     `py_acti`, for example see
     `actimetrics::py_acti_calculate_stepcount`, which calls
-    `actimetrics::acti_calculate_stepcount`.  
+    `actimetrics::acti_calculate_stepcount`.\
 6.  Packages have vignettes where possible. They can use files from
     `activerse` packages using `system.file` if they want to use the
-    data.  
+    data.\
 7.  Individual packages can be depended on with their own system, but
     functions should be wrapped using the above norms into an
     `activerse` package to be “included”.
@@ -110,9 +110,9 @@ library(activerse)
 # activerse-load:start
 search()[grepl("^package:(actibase|actiplot|actiread|actimetrics|actisensorlog|actisomni|actiwalkability|actiquantiles)$", search())]
 #> [1] "package:actiquantiles"   "package:actiwalkability"
-#> [3] "package:actisomni"        "package:actisensorlog"
+#> [3] "package:actisomni"       "package:actisensorlog"  
 #> [5] "package:actimetrics"     "package:actiread"       
-#> [7] "package:actibase"
+#> [7] "package:actiplot"        "package:actibase"
 # activerse-load:end
 ```
 
