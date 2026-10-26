@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
   
   
 <!-- activerse-intro:start -->
-`activerse` is a lightweight helper package that attaches [`actibase`](https://github.com/actibase), [`actiplot`](https://github.com/jhuwit/actiplot), [`actiread`](https://github.com/actiread), [`actimetrics`](https://github.com/actimetrics), [`actisensorlog`](https://github.com/actisensorlog), [`actisomni`](https://github.com/jhuwit/actisomni), [`actiwalkability`](https://github.com/actiwalkability), and [`actiquantiles`](https://github.com/actiquantiles) together.
+`activerse` is a lightweight helper package that attaches [`actibase`](https://github.com/jhuwit/actibase), [`actiplot`](https://github.com/jhuwit/actiplot), [`actiread`](https://github.com/jhuwit/actiread), [`actimetrics`](https://github.com/jhuwit/actimetrics), [`actisensorlog`](https://github.com/jhuwit/actisensorlog), [`actisomni`](https://github.com/jhuwit/actisomni), [`actiwalkability`](https://github.com/jhuwit/actiwalkability), and [`actiquantiles`](https://github.com/jhuwit/actiquantiles) together.
 <!-- activerse-intro:end -->
 
 

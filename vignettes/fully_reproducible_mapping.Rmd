@@ -288,7 +288,7 @@ out$daily %>%
 ## Reproduce the Demographic Data
 
 The next section reproduces the cleaned demographic table from
-[`demog_mapping.R`](./demog_mapping.R). It is wrapped in a collapsible block so
+`demog_mapping.R`. It is wrapped in a collapsible block so
 the report stays readable, but the code still runs when the document is rendered.
 The chunk is cached and the spreadsheet is stored locally, so the expensive work
 only happens once unless the inputs change.
