@@ -55,9 +55,6 @@ Config/activerse/related-packages:
     sleeper,
     stepcount,
     walking
-Remotes:
-    jhuwit/actiplot,
-    jhuwit/actisomni
 URL: https://github.com/jhuwit/activerse, https://jhuwit.github.io/activerse/
 BugReports: https://github.com/jhuwit/activerse/issues
 Config/roxygen2/version: 8.0.0
