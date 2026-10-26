@@ -6,9 +6,19 @@ test_that("intentional actisensorlog re-exports are ignored", {
     )
   )
 
-  expect_false(
+})
+
+test_that("non-re-exported names are not on the allowlist", {
+  expect_true(
     activerse:::activerse_conflict_should_report(
       "acti_summarize_sensorlog",
+      c("package:actimetrics", "package:actisensorlog")
+    )
+  )
+
+  expect_true(
+    activerse:::activerse_conflict_should_report(
+      "acti_read_sensorlog",
       c("package:actimetrics", "package:actisensorlog")
     )
   )

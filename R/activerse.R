@@ -115,8 +115,7 @@ activerse_conflict_should_report <- function(fun, envs) {
     return(FALSE)
   }
 
-  # actisensorlog intentionally re-exports actiread helpers and defines
-  # SensorLog-specific wrappers that overlap with upstream actimetrics names.
+  # actisensorlog intentionally re-exports actiread SensorLog helpers.
   # Those are expected and should not be surfaced as attach-time conflicts.
   if (activerse_conflict_is_intentional(fun, pkgs)) {
     return(FALSE)
@@ -132,19 +131,15 @@ activerse_conflict_is_intentional <- function(fun, pkgs) {
   }
 
   losers <- setdiff(pkgs, winner)
-  if (!all(losers %in% c("actiread", "actimetrics"))) {
+  if (!all(losers %in% "actiread")) {
     return(FALSE)
   }
 
   fun %in% c(
-    "acti_calculate_distance",
-    "acti_check_duplicate_times",
     "acti_convert_sensorlogger_time",
     "acti_example_sensorlog_file",
     "acti_example_sensorlogger_file",
     "acti_example_sensorlogger_location_file",
-    "acti_minute_sensorlog",
-    "acti_process_sensorlog",
     "acti_read_sensorlog",
     "acti_read_sensorlogger",
     "acti_read_sensorlogger_general",
@@ -152,12 +147,8 @@ activerse_conflict_is_intentional <- function(fun, pkgs) {
     "acti_rewrite_sensorlog_csv",
     "acti_sensorlog_csv_colnames_mapping",
     "acti_sensorlog_csv_spec",
-    "acti_sensorlog_process_time",
     "acti_sensorlogger_location_colnames_mapping",
-    "acti_sensorlogger_location_spec",
-    "acti_summarise_sensorlog",
-    "acti_summarize_distance_sensorlog",
-    "acti_summarize_sensorlog"
+    "acti_sensorlogger_location_spec"
   )
 }
 

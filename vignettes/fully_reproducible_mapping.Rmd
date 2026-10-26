@@ -157,7 +157,7 @@ acti_run <- function(data, calibrate = FALSE,
   processed <- acti_process(data)
   
   if (run_stepcount) {
-    if (requireNamespace("stepcount", quietly = TRUE) ||
+    if (!requireNamespace("stepcount", quietly = TRUE) ||
         !stepcount::have_stepcount()) {
       run_stepcount = FALSE
       cli::cli_warn(paste0("`run_stepcount` = TRUE, but 
