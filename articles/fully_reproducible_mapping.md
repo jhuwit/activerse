@@ -68,11 +68,11 @@ if (requireNamespace("readxl", quietly = TRUE)) {
 }
 library(activerse)
 #> Attaching activerse packages
-#> - actibase 0.6.0
+#> - actibase 0.8.0
 #> - actiplot 0.1.0
 #> - actiread 0.5.0
-#> - actimetrics 0.4.0
-#> - actisensorlog 0.2.0
+#> - actimetrics 0.9.0
+#> - actisensorlog 0.3.0
 #> - actisomni 0.2.0
 #> - actiwalkability 0.1.0
 #> - actiquantiles 0.1.0
@@ -189,7 +189,7 @@ checker = function(data) {
   }
 }
 acti_run <- function(data, calibrate = FALSE,
-                     run_stepcount = TRUE,
+                     run_stepcount = FALSE,
                      run_forest = FALSE) {
   if (calibrate) {
     data <- acti_calibrate(data)
@@ -200,7 +200,7 @@ acti_run <- function(data, calibrate = FALSE,
   processed <- acti_process(data)
   
   if (run_stepcount) {
-    if (requireNamespace("stepcount", quietly = TRUE) ||
+    if (!requireNamespace("stepcount", quietly = TRUE) ||
         !stepcount::have_stepcount()) {
       run_stepcount = FALSE
       cli::cli_warn(paste0("`run_stepcount` = TRUE, but 
@@ -302,9 +302,6 @@ out <- acti_run(data)
 #> [1] "Trimming Data"
 #> [1] "Getting data back to 10Hz for accumulation"
 #> [1] "Summing epochs"
-#> Joining with `by = join_by(timestamp)`
-#> Warning: `run_stepcount` = TRUE, but have_stepcount (`?stepcount::have_stepcount()`)
-#> came back `FALSE`
 #> Finding Peak Locations
 #> Thresholding Peak by VM Threshold
 #> Thresholding Peak by Periodicity
@@ -322,7 +319,8 @@ out <- acti_run(data)
 #> gsignal print.specgram gsignal plot.specgram gsignal
 #> sdt completed
 #> Joining with `by = join_by(time)`
-#> Joining with `by = join_by(date)`
+#> Joining with `by = join_by(date, n_minutes_wear, n_minutes_observed,
+#> prop_minutes_wear, prop_minutes_wear_from_observed, is_included)`
 #> Joining with `by = join_by(date)`
 ```
 
@@ -361,14 +359,14 @@ out$inclusion %>%
 
 | date | n_minutes_wear | n_minutes_observed | prop_minutes_wear | prop_minutes_wear_from_observed | is_included |
 |:---|---:|---:|---:|---:|:---|
-| 2016-10-17 | 382 | 1440 | 0.2652778 | 0.2652778 | FALSE |
+| 2016-10-17 | 382 | 480 | 0.2652778 | 0.7958333 | FALSE |
 | 2016-10-18 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
 | 2016-10-19 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
 | 2016-10-20 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
 | 2016-10-21 | 1300 | 1440 | 0.9027778 | 0.9027778 | FALSE |
 | 2016-10-22 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
 | 2016-10-23 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
-| 2016-10-24 | 959 | 1440 | 0.6659722 | 0.6659722 | FALSE |
+| 2016-10-24 | 959 | 960 | 0.6659722 | 0.9989583 | FALSE |
 
 The daily table is the compact summary that gets paired with the
 demographic data.
@@ -382,23 +380,22 @@ out$daily %>%
 
 | date | counts | counts_log10 | steps_vs_original | steps_vs_revised | steps_sdt | n_minutes_wear | n_minutes_observed | prop_minutes_wear | prop_minutes_wear_from_observed | is_included |
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|:---|
-| 2016-10-17 | 861018 | 1038.614 | 3013 | 3123 | 8807 | 382 | 1440 | 0.2652778 | 0.2652778 | FALSE |
+| 2016-10-17 | 861018 | 1038.614 | 3013 | 3123 | 8807 | 382 | 480 | 0.2652778 | 0.7958333 | FALSE |
 | 2016-10-18 | 2752651 | 2996.724 | 9130 | 9412 | 28916 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
 | 2016-10-19 | 1932515 | 2554.070 | 8703 | 9251 | 20835 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
 | 2016-10-20 | 1654903 | 2131.413 | 5838 | 6279 | 16212 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
 | 2016-10-21 | 2261210 | 2814.163 | 7546 | 7627 | 22837 | 1300 | 1440 | 0.9027778 | 0.9027778 | FALSE |
 | 2016-10-22 | 1640473 | 2321.432 | 7863 | 7162 | 21173 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
 | 2016-10-23 | 1742237 | 2408.970 | 3806 | 2831 | 17726 | 1440 | 1440 | 1.0000000 | 1.0000000 | TRUE |
-| 2016-10-24 | 1027828 | 1481.536 | 5047 | 5104 | 11712 | 959 | 1440 | 0.6659722 | 0.6659722 | FALSE |
+| 2016-10-24 | 1027828 | 1481.536 | 5047 | 5104 | 11712 | 959 | 960 | 0.6659722 | 0.9989583 | FALSE |
 
 ## Reproduce the Demographic Data
 
 The next section reproduces the cleaned demographic table from
-[`demog_mapping.R`](https://jhuwit.github.io/activerse/articles/demog_mapping.R).
-It is wrapped in a collapsible block so the report stays readable, but
-the code still runs when the document is rendered. The chunk is cached
-and the spreadsheet is stored locally, so the expensive work only
-happens once unless the inputs change.
+`demog_mapping.R`. It is wrapped in a collapsible block so the report
+stays readable, but the code still runs when the document is rendered.
+The chunk is cached and the spreadsheet is stored locally, so the
+expensive work only happens once unless the inputs change.
 
 ### Show how the demographic table is rebuilt
 
@@ -525,13 +522,14 @@ demographic inputs.
 ``` r
 
 actiquantiles::acti_map_nhanes(map_data)
-#> # A tibble: 4 × 5
-#>   sex     age measure              value acti_pa_quantile
-#>   <chr> <dbl> <chr>                <dbl>            <dbl>
-#> 1 F        27 steps_vs_original    7068            0.212 
-#> 2 F        27 steps_vs_revised     6987            0.250 
-#> 3 F        27 steps_sdt           20972.          NA     
-#> 4 F        27 ac                1944556.           0.0977
+#> Warning: No NHANES CDF mapping for measure(s): 'steps_sdt'
+#> # A tibble: 4 × 6
+#>   sex     age measure              value age_category_pa_map acti_pa_quantile
+#>   <chr> <dbl> <chr>                <dbl> <chr>                          <dbl>
+#> 1 F        27 steps_vs_original    7068  [20,30)                       0.212 
+#> 2 F        27 steps_vs_revised     6987  [20,30)                       0.250 
+#> 3 F        27 steps_sdt           20972. [20,30)                      NA     
+#> 4 F        27 ac                1944556. [20,30)                       0.0977
 ```
 
 ## Why This Structure Helps

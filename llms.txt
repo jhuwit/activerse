@@ -1,14 +1,14 @@
 # activerse
 
 `activerse` is a lightweight helper package that attaches
-[`actibase`](https://github.com/actibase),
+[`actibase`](https://github.com/jhuwit/actibase),
 [`actiplot`](https://github.com/jhuwit/actiplot),
-[`actiread`](https://github.com/actiread),
-[`actimetrics`](https://github.com/actimetrics),
-[`actisensorlog`](https://github.com/actisensorlog),
+[`actiread`](https://github.com/jhuwit/actiread),
+[`actimetrics`](https://github.com/jhuwit/actimetrics),
+[`actisensorlog`](https://github.com/jhuwit/actisensorlog),
 [`actisomni`](https://github.com/jhuwit/actisomni),
-[`actiwalkability`](https://github.com/actiwalkability), and
-[`actiquantiles`](https://github.com/actiquantiles) together.
+[`actiwalkability`](https://github.com/jhuwit/actiwalkability), and
+[`actiquantiles`](https://github.com/jhuwit/actiquantiles) together.
 
 It is designed to behave a bit like `tidyverse`: load one package, then
 use the functions from the actigraphy packages directly.

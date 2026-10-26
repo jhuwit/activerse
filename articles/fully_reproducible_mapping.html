@@ -36,6 +36,7 @@
 <li><a class="dropdown-item" href="../articles/fully_reproducible_mapping.html">Processing Physical Activity to a Normalized Quantile</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -127,11 +128,11 @@ step-counting part of the pipeline is reproducible too.</p>
 <span><span class="op">}</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jhuwit/activerse" class="external-link">activerse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; Attaching activerse packages</span></span>
-<span><span class="co">#&gt; - actibase 0.6.0</span></span>
+<span><span class="co">#&gt; - actibase 0.8.0</span></span>
 <span><span class="co">#&gt; - actiplot 0.1.0</span></span>
 <span><span class="co">#&gt; - actiread 0.5.0</span></span>
-<span><span class="co">#&gt; - actimetrics 0.4.0</span></span>
-<span><span class="co">#&gt; - actisensorlog 0.2.0</span></span>
+<span><span class="co">#&gt; - actimetrics 0.9.0</span></span>
+<span><span class="co">#&gt; - actisensorlog 0.3.0</span></span>
 <span><span class="co">#&gt; - actisomni 0.2.0</span></span>
 <span><span class="co">#&gt; - actiwalkability 0.1.0</span></span>
 <span><span class="co">#&gt; - actiquantiles 0.1.0</span></span></code></pre></div>
@@ -240,7 +241,7 @@ it.</p>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span>
 <span><span class="va">acti_run</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">calibrate</span> <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>                     <span class="va">run_stepcount</span> <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                     <span class="va">run_stepcount</span> <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>                     <span class="va">run_forest</span> <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">calibrate</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">acti_calibrate</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
@@ -251,7 +252,7 @@ it.</p>
 <span>  <span class="va">processed</span> <span class="op">&lt;-</span> <span class="fu">acti_process</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
 <span>  </span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="va">run_stepcount</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"stepcount"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">||</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"stepcount"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">||</span></span>
 <span>        <span class="op">!</span><span class="fu">stepcount</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/stepcount/man/stepcount_setup.html" class="external-link">have_stepcount</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="va">run_stepcount</span> <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span>      <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli_warn</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"`run_stepcount` = TRUE, but </span></span>
@@ -350,9 +351,6 @@ it.</p>
 <span><span class="co">#&gt; [1] "Trimming Data"</span></span>
 <span><span class="co">#&gt; [1] "Getting data back to 10Hz for accumulation"</span></span>
 <span><span class="co">#&gt; [1] "Summing epochs"</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(timestamp)`</span></span>
-<span><span class="co">#&gt; Warning: `run_stepcount` = TRUE, but have_stepcount (`?stepcount::have_stepcount()`)</span></span>
-<span><span class="co">#&gt; came back `FALSE`</span></span>
 <span><span class="co">#&gt; Finding Peak Locations</span></span>
 <span><span class="co">#&gt; Thresholding Peak by VM Threshold</span></span>
 <span><span class="co">#&gt; Thresholding Peak by Periodicity</span></span>
@@ -370,7 +368,8 @@ it.</p>
 <span><span class="co">#&gt; gsignal print.specgram gsignal plot.specgram gsignal</span></span>
 <span><span class="co">#&gt; sdt completed</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(time)`</span></span>
-<span><span class="co">#&gt; Joining with `by = join_by(date)`</span></span>
+<span><span class="co">#&gt; Joining with `by = join_by(date, n_minutes_wear, n_minutes_observed,</span></span>
+<span><span class="co">#&gt; prop_minutes_wear, prop_minutes_wear_from_observed, is_included)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(date)`</span></span></code></pre></div>
 <p>The minute-level output shows the raw time series after step counts,
 wear-time classification, and the log-count transform have been
@@ -512,9 +511,9 @@ summaries should only use days with enough valid data.</p>
 <tr class="odd">
 <td align="left">2016-10-17</td>
 <td align="right">382</td>
-<td align="right">1440</td>
+<td align="right">480</td>
 <td align="right">0.2652778</td>
-<td align="right">0.2652778</td>
+<td align="right">0.7958333</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="even">
@@ -568,9 +567,9 @@ summaries should only use days with enough valid data.</p>
 <tr class="even">
 <td align="left">2016-10-24</td>
 <td align="right">959</td>
-<td align="right">1440</td>
+<td align="right">960</td>
 <td align="right">0.6659722</td>
-<td align="right">0.6659722</td>
+<td align="right">0.9989583</td>
 <td align="left">FALSE</td>
 </tr>
 </tbody>
@@ -617,9 +616,9 @@ demographic data.</p>
 <td align="right">3123</td>
 <td align="right">8807</td>
 <td align="right">382</td>
-<td align="right">1440</td>
+<td align="right">480</td>
 <td align="right">0.2652778</td>
-<td align="right">0.2652778</td>
+<td align="right">0.7958333</td>
 <td align="left">FALSE</td>
 </tr>
 <tr class="even">
@@ -708,9 +707,9 @@ demographic data.</p>
 <td align="right">5104</td>
 <td align="right">11712</td>
 <td align="right">959</td>
-<td align="right">1440</td>
+<td align="right">960</td>
 <td align="right">0.6659722</td>
-<td align="right">0.6659722</td>
+<td align="right">0.9989583</td>
 <td align="left">FALSE</td>
 </tr>
 </tbody>
@@ -719,11 +718,11 @@ demographic data.</p>
 <div class="section level2">
 <h2 id="reproduce-the-demographic-data">Reproduce the Demographic Data<a class="anchor" aria-label="anchor" href="#reproduce-the-demographic-data"></a>
 </h2>
-<p>The next section reproduces the cleaned demographic table from <a href="./demog_mapping.R"><code>demog_mapping.R</code></a>. It is wrapped
-in a collapsible block so the report stays readable, but the code still
-runs when the document is rendered. The chunk is cached and the
-spreadsheet is stored locally, so the expensive work only happens once
-unless the inputs change.</p>
+<p>The next section reproduces the cleaned demographic table from
+<code>demog_mapping.R</code>. It is wrapped in a collapsible block so
+the report stays readable, but the code still runs when the document is
+rendered. The chunk is cached and the spreadsheet is stored locally, so
+the expensive work only happens once unless the inputs change.</p>
 <div class="section level3 callout-note" collapse="true">
 <h3 id="show-how-the-demographic-table-is-rebuilt">Show how the demographic table is rebuilt<a class="anchor" aria-label="anchor" href="#show-how-the-demographic-table-is-rebuilt"></a>
 </h3>
@@ -844,13 +843,14 @@ accelerometer counts for the included days, positioned relative to the
 demographic inputs.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">actiquantiles</span><span class="fu">::</span><span class="fu"><a href="https://jhuwit.github.io/actiquantiles/reference/acti_map_nhanes.html" class="external-link">acti_map_nhanes</a></span><span class="op">(</span><span class="va">map_data</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 5</span></span></span>
-<span><span class="co">#&gt;   sex     age measure              value acti_pa_quantile</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> F        27 steps_vs_original    <span style="text-decoration: underline;">7</span>068            0.212 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> F        27 steps_vs_revised     <span style="text-decoration: underline;">6</span>987            0.250 </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> F        27 steps_sdt           <span style="text-decoration: underline;">20</span>972.          <span style="color: #BB0000;">NA</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> F        27 ac                1<span style="text-decoration: underline;">944</span>556.           0.097<span style="text-decoration: underline;">7</span></span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: No NHANES CDF mapping for measure(s): 'steps_sdt'</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 6</span></span></span>
+<span><span class="co">#&gt;   sex     age measure              value age_category_pa_map acti_pa_quantile</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> F        27 steps_vs_original    <span style="text-decoration: underline;">7</span>068  [20,30)                       0.212 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> F        27 steps_vs_revised     <span style="text-decoration: underline;">6</span>987  [20,30)                       0.250 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> F        27 steps_sdt           <span style="text-decoration: underline;">20</span>972. [20,30)                      <span style="color: #BB0000;">NA</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> F        27 ac                1<span style="text-decoration: underline;">944</span>556. [20,30)                       0.097<span style="text-decoration: underline;">7</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="why-this-structure-helps">Why This Structure Helps<a class="anchor" aria-label="anchor" href="#why-this-structure-helps"></a>
