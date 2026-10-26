@@ -146,7 +146,7 @@ checker = function(data) {
   }
 }
 acti_run <- function(data, calibrate = FALSE,
-                     run_stepcount = TRUE,
+                     run_stepcount = FALSE,
                      run_forest = FALSE) {
   if (calibrate) {
     data <- acti_calibrate(data)
