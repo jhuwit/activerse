@@ -70,10 +70,10 @@ library(activerse)
 #> Attaching activerse packages
 #> - actibase 0.8.0
 #> - actiplot 0.1.0
-#> - actiread 0.5.0
+#> - actiread 0.9.0
 #> - actimetrics 0.9.0
 #> - actisensorlog 0.3.0
-#> - actisomni 0.2.0
+#> - actisomni 0.4.0
 #> - actiwalkability 0.1.0
 #> - actiquantiles 0.1.0
 ```
