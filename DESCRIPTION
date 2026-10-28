@@ -54,7 +54,8 @@ Config/activerse/related-packages:
     mapnhanespa,
     sleeper,
     stepcount,
-    walking
+    walking,
+    rester
 URL: https://github.com/jhuwit/activerse, https://jhuwit.github.io/activerse/
 BugReports: https://github.com/jhuwit/activerse/issues
 Config/roxygen2/version: 8.1.1

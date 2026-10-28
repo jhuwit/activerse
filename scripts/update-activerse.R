@@ -117,10 +117,10 @@ oxford_list <- function(x) {
   paste0(paste(x[-length(x)], collapse = ", "), ", and ", x[length(x)])
 }
 
-build_intro_block <- function(packages, remotes) {
+build_intro_block <- function(packages, remotes, owner) {
   remote_by_package <- setNames(remotes, sub("^.*/", "", remotes))
   repos <- unname(remote_by_package[packages])
-  repos[is.na(repos) | !nzchar(repos)] <- packages[is.na(repos) | !nzchar(repos)]
+  repos[is.na(repos) | !nzchar(repos)] <- paste0(owner, "/", packages[is.na(repos) | !nzchar(repos)])
   links <- sprintf("[%s](https://github.com/%s)", paste0("`", packages, "`"), repos)
 
   c(
@@ -256,7 +256,7 @@ readme_rmd_lines <- replace_block(
   readme_rmd_lines,
   "<!-- activerse-intro:start -->",
   "<!-- activerse-intro:end -->",
-  build_intro_block(core_packages, remotes)
+  build_intro_block(core_packages, remotes, owner)
 )
 readme_rmd_lines <- replace_block(
   readme_rmd_lines,

@@ -61,6 +61,7 @@ attached by `activerse`.
 | `sleeper` | [jhuwit/sleeper](https://github.com/jhuwit/sleeper) | [![CRAN version](https://www.r-pkg.org/badges/version/sleeper)](https://cran.r-project.org/package=sleeper) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/sleeper?label=GitHub)](https://github.com/jhuwit/sleeper) [![R CMD check](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/sleeper/actions/workflows/R-CMD-check.yaml) |
 | `stepcount` | [jhuwit/stepcount](https://github.com/jhuwit/stepcount) | [![CRAN version](https://www.r-pkg.org/badges/version/stepcount)](https://cran.r-project.org/package=stepcount) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/stepcount?label=GitHub)](https://github.com/jhuwit/stepcount) [![R CMD check](https://github.com/jhuwit/stepcount/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/stepcount/actions/workflows/R-CMD-check.yaml) |
 | `walking` | [jhuwit/walking](https://github.com/jhuwit/walking) | [![CRAN version](https://www.r-pkg.org/badges/version/walking)](https://cran.r-project.org/package=walking) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/walking?label=GitHub)](https://github.com/jhuwit/walking) [![R CMD check](https://github.com/jhuwit/walking/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/walking/actions/workflows/R-CMD-check.yaml) |
+| `rester` | [jhuwit/rester](https://github.com/jhuwit/rester) | [![CRAN version](https://www.r-pkg.org/badges/version/rester)](https://cran.r-project.org/package=rester) [![GitHub version](https://img.shields.io/github/r-package/v/jhuwit/rester?label=GitHub)](https://github.com/jhuwit/rester) [![R CMD check](https://github.com/jhuwit/rester/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhuwit/rester/actions/workflows/R-CMD-check.yaml) |
 
 <!-- activerse-related-packages:end -->
 
@@ -89,10 +90,10 @@ maintainability.
     so it can be Suggests. These wrappers should have the prefix
     `py_acti`, for example see
     `actimetrics::py_acti_calculate_stepcount`, which calls
-    `actimetrics::acti_calculate_stepcount`.\
+    `actimetrics::acti_calculate_stepcount`.  
 6.  Packages have vignettes where possible. They can use files from
     `activerse` packages using `system.file` if they want to use the
-    data.\
+    data.  
 7.  Individual packages can be depended on with their own system, but
     functions should be wrapped using the above norms into an
     `activerse` package to be “included”.
