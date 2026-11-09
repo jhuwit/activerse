@@ -151,7 +151,9 @@ build_table_block <- function(packages, remotes, owner, start_marker, end_marker
       "[![R CMD check](https://github.com/", repo, "/actions/workflows/R-CMD-check.yaml/badge.svg)](",
       "https://github.com/", repo, "/actions/workflows/R-CMD-check.yaml) ",
       "[![GitHub issues](https://img.shields.io/github/issues/", repo,
-      ")](https://github.com/", repo, "/issues) |"
+      ")](https://github.com/", repo, "/issues) ",
+      "[![GitHub pull requests](https://img.shields.io/github/issues-pr/", repo,
+      ")](https://github.com/", repo, "/pulls) |"
     )
   }, character(1))
 
