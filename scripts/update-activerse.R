@@ -149,7 +149,9 @@ build_table_block <- function(packages, remotes, owner, start_marker, end_marker
       "[![GitHub version](https://img.shields.io/github/r-package/v/", repo,
       "?label=GitHub)](https://github.com/", repo, ") ",
       "[![R CMD check](https://github.com/", repo, "/actions/workflows/R-CMD-check.yaml/badge.svg)](",
-      "https://github.com/", repo, "/actions/workflows/R-CMD-check.yaml) |"
+      "https://github.com/", repo, "/actions/workflows/R-CMD-check.yaml) ",
+      "[![GitHub issues](https://img.shields.io/github/issues/", repo,
+      ")](https://github.com/", repo, "/issues) |"
     )
   }, character(1))
 
