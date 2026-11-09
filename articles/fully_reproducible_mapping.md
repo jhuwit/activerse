@@ -71,11 +71,27 @@ library(activerse)
 #> - actibase 0.8.0
 #> - actiplot 0.1.0
 #> - actiread 0.9.0
-#> - actimetrics 0.9.0
+#> - actimetrics 0.10.0
 #> - actisensorlog 0.3.0
 #> - actisomni 0.4.0
 #> - actiwalkability 0.1.0
 #> - actiquantiles 0.1.0
+#> -- Conflicts ------------------------------------------ activerse 0.1.0 --
+#> x actisomni::acti_sleep_diary() masks actimetrics::acti_sleep_diary()
+#> x actisomni::acti_sleep_ensemble() masks actimetrics::acti_sleep_ensemble()
+#> x actisomni::acti_sleep_fuse_labels() masks actimetrics::acti_sleep_fuse_labels()
+#> x actisomni::acti_sleep_guider() masks actimetrics::acti_sleep_guider()
+#> x actisomni::acti_sleep_guider_requirements() masks actimetrics::acti_sleep_guider_requirements()
+#> x actisomni::acti_sleep_hdcza() masks actimetrics::acti_sleep_hdcza()
+#> x actisomni::acti_sleep_hlrb() masks actimetrics::acti_sleep_hlrb()
+#> x actisomni::acti_sleep_horangle() masks actimetrics::acti_sleep_horangle()
+#> x actisomni::acti_sleep_l5() masks actimetrics::acti_sleep_l5()
+#> x actisomni::acti_sleep_label() masks actimetrics::acti_sleep_label()
+#> x actisomni::acti_sleep_labels() masks actimetrics::acti_sleep_labels()
+#> x actisomni::acti_sleep_notworn() masks actimetrics::acti_sleep_notworn()
+#> x actisomni::acti_sleep_setwindow() masks actimetrics::acti_sleep_setwindow()
+#> x actisomni::acti_sleep_sib() masks actimetrics::acti_sleep_sib()
+#> i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 The report keeps downloaded files in a small directory structure so that

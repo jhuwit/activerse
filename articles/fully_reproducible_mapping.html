@@ -131,11 +131,27 @@ step-counting part of the pipeline is reproducible too.</p>
 <span><span class="co">#&gt; - actibase 0.8.0</span></span>
 <span><span class="co">#&gt; - actiplot 0.1.0</span></span>
 <span><span class="co">#&gt; - actiread 0.9.0</span></span>
-<span><span class="co">#&gt; - actimetrics 0.9.0</span></span>
+<span><span class="co">#&gt; - actimetrics 0.10.0</span></span>
 <span><span class="co">#&gt; - actisensorlog 0.3.0</span></span>
 <span><span class="co">#&gt; - actisomni 0.4.0</span></span>
 <span><span class="co">#&gt; - actiwalkability 0.1.0</span></span>
-<span><span class="co">#&gt; - actiquantiles 0.1.0</span></span></code></pre></div>
+<span><span class="co">#&gt; - actiquantiles 0.1.0</span></span>
+<span><span class="co">#&gt; -- Conflicts ------------------------------------------ activerse 0.1.0 --</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_diary() masks actimetrics::acti_sleep_diary()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_ensemble() masks actimetrics::acti_sleep_ensemble()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_fuse_labels() masks actimetrics::acti_sleep_fuse_labels()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_guider() masks actimetrics::acti_sleep_guider()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_guider_requirements() masks actimetrics::acti_sleep_guider_requirements()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_hdcza() masks actimetrics::acti_sleep_hdcza()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_hlrb() masks actimetrics::acti_sleep_hlrb()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_horangle() masks actimetrics::acti_sleep_horangle()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_l5() masks actimetrics::acti_sleep_l5()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_label() masks actimetrics::acti_sleep_label()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_labels() masks actimetrics::acti_sleep_labels()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_notworn() masks actimetrics::acti_sleep_notworn()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_setwindow() masks actimetrics::acti_sleep_setwindow()</span></span>
+<span><span class="co">#&gt; x actisomni::acti_sleep_sib() masks actimetrics::acti_sleep_sib()</span></span>
+<span><span class="co">#&gt; i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
 <p>The report keeps downloaded files in a small directory structure so
 that each artifact only has to be fetched once.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
