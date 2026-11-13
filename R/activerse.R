@@ -1,3 +1,12 @@
+#' List the packages in the activerse
+#'
+#' Returns the names of the packages that are attached when
+#' \pkg{activerse} is loaded with [library()].
+#'
+#' @return A character vector of package names.
+#' @export
+#' @examples
+#' activerse_packages()
 activerse_packages <- function() {
   c(
     "actibase",
