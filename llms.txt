@@ -341,7 +341,12 @@ To list an ecosystem package in the README without making it an
 This work was supported by NIH P30AG021334 and the Johns Hopkins Older
 Americans Independence Center (OAIC) Pepper Center grant.
 
-# 
+# Package index
+
+## All functions
+
+- [`activerse_packages()`](https://jhuwit.github.io/activerse/reference/activerse_packages.md)
+  : List the packages in the activerse
 
 # Articles
 
